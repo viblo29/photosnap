@@ -25,7 +25,6 @@ function HeroSection() {
                   <HomePageButton
                     text="GET AN INVITE"
                     textColor="white"
-                    arrowColor="white"
                     gap={4.5}
                   />
                 </div> 
@@ -59,7 +58,6 @@ function HeroSection() {
                   <HomePageButton
                     text="VIEW THE STORIES"
                     textColor="black"
-                    arrowColor="black"
                     gap={4.5}
                   />
                 </div> 
@@ -83,7 +81,6 @@ function HeroSection() {
                   <HomePageButton
                     text="VIEW THE STORIES"
                     textColor="black"
-                    arrowColor="black"
                     gap={4.5}
                   />
                 </div> 
