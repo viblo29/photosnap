@@ -12,7 +12,7 @@ function HeroSection() {
               <img src='/images/line.svg' alt="" />
             </div>
 
-            <div className='w-[387px] h-76'>
+            <div className='w-96.75 h-76'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   CREATE AND SHARE YOUR PHOTO STORIES.
                 </h1>
@@ -31,27 +31,27 @@ function HeroSection() {
                 </div> 
             </div>
           </div>
-          <div className="w-[58%] h-[650px] ">
+          <div className="w-[58%] h-162.5 ">
             <img
-            src='/images/N1.svg' 
+            src='/images/N1.webp' 
             className='w-full h-full object-cover'/>
           </div>
         </div>
 
       {/* Section 2 */}
-        <div className='h-[600px] w-screen flex'>
+        <div className='h-150 w-screen flex'>
           <div className="w-[58%] h-full ">
             <img
-            src='/images/N2.svg' 
+            src='/images/N2.webp' 
             className='w-full h-full object-cover'/>
           </div>
-          <div className="bg-white text-black w-[42%] h-[600px] flex justify-center items-center">
-            <div className='w-[387px] h-[329px]'>
-                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
+          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center">
+            <div className='w-96.75 h-82.25'>
+                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   BEAUTIFUL STORIES <br />EVERY TIME
                 </h1>
 
-                <p className="mt-4 text-[15px] font-normal leading-[25px] opacity-60">
+                <p className="mt-4 text-[15px] font-normal leading-6.25 opacity-60">
                   We provide design templates to ensure your stories look terrific. Easily add photos, text, embed maps and media from other networks. Then share your story with everyone.
                 </p>
 
@@ -68,14 +68,14 @@ function HeroSection() {
         </div>
 
       {/* Section 3 */}
-        <div className='h-[650px] w-full flex'>
-          <div className="bg-white text-black w-[42%] h-[600px] flex justify-center items-center">
-            <div className='w-[387px] h-[304px]'>
-                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
+        <div className='h-162.5 w-full flex'>
+          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center">
+            <div className='w-96.75 h-76'>
+                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   DESIGNED FOR EVERYONE
                 </h1>
 
-                <p className="mt-4 text-[15px] font-normal leading-[25px] opacity-60">
+                <p className="mt-4 text-[15px] font-normal leading-6.25 opacity-60">
                   Photosnap can help you create stories that resonate with your audience.  Our tool is designed for photographers of all levels, brands, businesses you name it. 
                 </p>
 
@@ -89,9 +89,9 @@ function HeroSection() {
                 </div> 
             </div>
           </div>
-          <div className="w-[58%] h-[600px] ">
+          <div className="w-[58%] h-150 ">
             <img
-            src='/images/N3.svg' 
+            src='/images/N3.webp' 
             className='w-full h-full object-cover'/>
           </div>
         </div>
