@@ -45,7 +45,7 @@ function HeroSection() {
             src='/images/N2.svg' 
             className='w-full h-full object-cover'/>
           </div>
-          <div className="bg-white text-black w-[610px] h-[650px] flex justify-center items-center">
+          <div className="bg-white text-black w-[610px] h-[600px] flex justify-center items-center">
             <div className='w-[387px] h-[329px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
                   BEAUTIFUL STORIES <br />EVERY TIME
@@ -68,8 +68,8 @@ function HeroSection() {
         </div>
 
       {/* Section 3 */}
-        <div className='h-[650px] w-screen flex'>
-          <div className="bg-white text-black w-[610px] h-[650px] flex justify-center items-center">
+        <div className='h-[650px] w-full flex'>
+          <div className="bg-white text-black w-[610px] h-[600px] flex justify-center items-center">
             <div className='w-[387px] h-[304px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
                   DESIGNED FOR EVERYONE
@@ -89,7 +89,7 @@ function HeroSection() {
                 </div> 
             </div>
           </div>
-          <div className="w-[830px] h-[650px] ">
+          <div className="w-[830px] h-[600px] ">
             <img
             src='/images/N3.svg' 
             className='w-full h-full object-cover'/>
