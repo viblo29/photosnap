@@ -14,7 +14,7 @@ function HomePageButton({ text, textColor, arrowColor, gap }: HomePageButtonProp
 
   return (
     <div>
-        <button className={`font-bold text-xs tracking-[2px] flex justify-center ${gapClass} ${textColorClass}`}>
+        <button className={`font-bold text-xs tracking-[2px] flex justify-center cursor-pointer ${gapClass} ${textColorClass}`}>
           {text}
             <div>
                 <svg width="42" height="13" viewBox="0 0 42 13" fill="none" xmlns="http://www.w3.org/2000/svg">
