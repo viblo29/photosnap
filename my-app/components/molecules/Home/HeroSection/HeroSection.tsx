@@ -2,7 +2,7 @@ import HomePageButton from '@/components/atoms/HomePageButton/HomePageButton'
 
 function HeroSection() {
   return (
-    <div className='w-screen h-auto flex flex-col'>
+    <div className='w-full h-auto flex flex-col items-center'>
       
         <div className='h-[650px] w-screen flex'>
           <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center">
