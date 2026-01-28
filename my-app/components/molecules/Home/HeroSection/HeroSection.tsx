@@ -33,7 +33,7 @@ function HeroSection() {
           </div>
           <div className="w-[58%] h-162.5 ">
             <img
-            src='/images/N1.svg' 
+            src='/images/N1.webp' 
             className='w-full h-full object-cover'/>
           </div>
         </div>
@@ -42,7 +42,7 @@ function HeroSection() {
         <div className='h-150 w-screen flex'>
           <div className="w-[58%] h-full ">
             <img
-            src='/images/N2.svg' 
+            src='/images/N2.webp' 
             className='w-full h-full object-cover'/>
           </div>
           <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center">
@@ -91,7 +91,7 @@ function HeroSection() {
           </div>
           <div className="w-[58%] h-150 ">
             <img
-            src='/images/N3.svg' 
+            src='/images/N3.webp' 
             className='w-full h-full object-cover'/>
           </div>
         </div>
