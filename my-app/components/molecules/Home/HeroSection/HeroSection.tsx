@@ -41,7 +41,7 @@ function HeroSection() {
           <div className="bg-white text-black w-[610px] h-[650px] flex justify-center items-center">
             <div className='w-[387px] h-[329px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
-                  BEAUTIFUL STORIES <br />EVERY TIME
+                  BEAUTIFUL STORIES <br />EVERY TIME
                 </h1>
 
                 <p className="mt-4 text-[15px] font-normal leading-[25px] opacity-60">
