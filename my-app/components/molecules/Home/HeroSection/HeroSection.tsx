@@ -4,6 +4,7 @@ function HeroSection() {
   return (
     <div className='w-full h-auto flex flex-col items-center'>
       
+      {/* Section 1 */}
         <div className='h-[650px] w-screen flex'>
           <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center">
             <div className='w-[387px] h-[304px]'>
@@ -15,7 +16,7 @@ function HeroSection() {
                   Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.
                 </p>
 
-                <div className="mt-10 bottom-0">
+                <div className="mt-10 cursor-pointer bottom-0">
                   <HomePageButton
                     text="GET AN INVITE"
                     textColor="white"
@@ -32,8 +33,9 @@ function HeroSection() {
           </div>
         </div>
 
-        <div className='h-[650px] w-screen flex'>
-          <div className="w-[830px] h-[650px] ">
+      {/* Section 2 */}
+        <div className='h-[600px] w-screen flex'>
+          <div className="w-[830px] h-full ">
             <img
             src='/images/N2.svg' 
             className='w-full h-full object-cover'/>
@@ -60,7 +62,7 @@ function HeroSection() {
           </div>
         </div>
 
-
+      {/* Section 3 */}
         <div className='h-[650px] w-screen flex'>
           <div className="bg-white text-black w-[610px] h-[650px] flex justify-center items-center">
             <div className='w-[387px] h-[304px]'>
