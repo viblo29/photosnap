@@ -2,22 +2,22 @@ import HomePageButton from '@/components/atoms/HomePageButton/HomePageButton'
 
 function HeroSection() {
   return (
-    <div className='w-full h-auto flex flex-col items-center'>
+    <div className='w-screen h-auto flex flex-col items-center'>
       
       {/* Section 1 */}
-        <div className='h-[650px] w-full flex'>
-          <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center relative">
+        <div className='h-162.5 w-full flex'>
+          <div className="bg-black text-white w-[42%] h-162.5 flex justify-center items-center relative">
             
-            <div className="absolute w-[6px] h-[304px] inset-0 top-[173px]">
+            <div className="absolute w-1.5 h-76 inset-0 top-43.25">
               <img src='/images/line.svg' alt="" />
             </div>
 
-            <div className='w-[387px] h-[304px]'>
-                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
+            <div className='w-[387px] h-76'>
+                <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   CREATE AND SHARE YOUR PHOTO STORIES.
                 </h1>
 
-                <p className="mt-4 text-[15px] font-normal leading-[25px] opacity-60">
+                <p className="mt-4 text-[15px] font-normal leading-6.25 opacity-60">
                   Photosnap is a platform for photographers and visual storytellers. We make it easy to share photos, tell stories and connect with others.
                 </p>
 
@@ -31,7 +31,7 @@ function HeroSection() {
                 </div> 
             </div>
           </div>
-          <div className="w-[830px] h-[650px] ">
+          <div className="w-[58%] h-[650px] ">
             <img
             src='/images/N1.svg' 
             className='w-full h-full object-cover'/>
@@ -40,12 +40,12 @@ function HeroSection() {
 
       {/* Section 2 */}
         <div className='h-[600px] w-screen flex'>
-          <div className="w-[830px] h-full ">
+          <div className="w-[58%] h-full ">
             <img
             src='/images/N2.svg' 
             className='w-full h-full object-cover'/>
           </div>
-          <div className="bg-white text-black w-[610px] h-[600px] flex justify-center items-center">
+          <div className="bg-white text-black w-[42%] h-[600px] flex justify-center items-center">
             <div className='w-[387px] h-[329px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
                   BEAUTIFUL STORIES <br />EVERY TIME
@@ -69,7 +69,7 @@ function HeroSection() {
 
       {/* Section 3 */}
         <div className='h-[650px] w-full flex'>
-          <div className="bg-white text-black w-[610px] h-[600px] flex justify-center items-center">
+          <div className="bg-white text-black w-[42%] h-[600px] flex justify-center items-center">
             <div className='w-[387px] h-[304px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
                   DESIGNED FOR EVERYONE
@@ -89,7 +89,7 @@ function HeroSection() {
                 </div> 
             </div>
           </div>
-          <div className="w-[830px] h-[600px] ">
+          <div className="w-[58%] h-[600px] ">
             <img
             src='/images/N3.svg' 
             className='w-full h-full object-cover'/>
