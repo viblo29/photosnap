@@ -4,7 +4,7 @@ function HeroSection() {
   return (
     <div>
       
-        <div className='h-[650px] w-screen'>
+        <div className='h-[650px] w-screen flex'>
           <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center">
             <div className='w-[387px] h-[304px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
@@ -26,11 +26,13 @@ function HeroSection() {
             </div>
           </div>
           <div className="w-[830px] h-[650px] ">
-            <img/>
+            <img
+            src='/images/N1.svg' 
+            className='w-full h-full object-cover'/>
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <section className="bg-black text-white p-20">
             <h1 className="text-4xl font-bold tracking-wide">
               CREATE AND SHARE YOUR PHOTO STORIES.
@@ -49,7 +51,7 @@ function HeroSection() {
               />
             </div>
           </section>
-        </div>
+        </div> */}
         
     
     </div>
