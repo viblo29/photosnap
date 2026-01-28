@@ -5,8 +5,13 @@ function HeroSection() {
     <div className='w-full h-auto flex flex-col items-center'>
       
       {/* Section 1 */}
-        <div className='h-[650px] w-screen flex'>
-          <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center">
+        <div className='h-[650px] w-full flex'>
+          <div className="bg-black text-white w-[610px] h-[650px] flex justify-center items-center relative">
+            
+            <div className="absolute w-[6px] h-[304px] inset-0 top-[173px]">
+              <img src='/images/line.svg' alt="" />
+            </div>
+
             <div className='w-[387px] h-[304px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-[48px]">
                   CREATE AND SHARE YOUR PHOTO STORIES.
