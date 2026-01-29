@@ -1,9 +1,17 @@
-import React from 'react'
-
-function NavButtons() {
+import React from "react";
+interface NavButtonsProps {
+  text: string;
+  textColor: "white" | "black";
+}
+function NavButtons({ text, textColor }: NavButtonsProps) {
+  const textColorClass = textColor === "white" ? "text-white" : "text-black";
   return (
-    <div>NavButtons</div>
-  )
+    <div>
+      <button className={`font-bold text-xs ${textColorClass} uppercase tracking-[2px] cursor-pointer p-0.5 transition-opacity duration-300 ease-in-out hover:opacity-30`}>
+        {text}
+      </button>
+    </div>
+  );
 }
 
-export default NavButtons
+export default NavButtons;
