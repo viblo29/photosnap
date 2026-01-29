@@ -29,7 +29,7 @@ function Stories() {
       {stories.map((story) => (
         <div
           key={story.title}
-          className="relative group w-full h-125"
+          className="relative group w-full h-125 cursor-pointer"
         >
 
           {/* INVISIBLE CONT (gasazomad)*/}
