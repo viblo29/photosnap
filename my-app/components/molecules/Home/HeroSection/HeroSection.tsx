@@ -18,9 +18,9 @@ function HeroSection() {
                     className="max-[700px]:h-35 object-contain"/>
             </div>
 
-            <div className='w-96.75 h-76 max-[700px]:w-[318px] max-[700px]:h[275px]'>
+            <div className='w-96.75 h-76 max-[700px]:w-79.5 max-[700px]:h[275px]'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12
-                               max-[700px]:text-[32px] max-[700px]:leading-[40px] max-[700px]:tracking-[3.33px]">
+                               max-[700px]:text-[32px] max-[700px]:leading-10 max-[700px]:tracking-[3.33px]">
                   CREATE AND SHARE YOUR PHOTO STORIES.
                 </h1>
 
@@ -60,9 +60,9 @@ function HeroSection() {
 
           <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[64%]
                           max-[700px]:w-full max-[700px]:h-104.75">
-            <div className='w-96.75 h-82.25 max-[700px]:w-[318px] max-[700px]:h-[275px]'>
+            <div className='w-96.75 h-82.25 max-[700px]:w-79.5 max-[700px]:h-68.75'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12
-                              max-[700px]:text-[32px] max-[700px]:leading-[40px] max-[700px]:tracking-[3.33px]">
+                              max-[700px]:text-[32px] max-[700px]:leading-10 max-[700px]:tracking-[3.33px]">
                   BEAUTIFUL STORIES <br />EVERY TIME
                 </h1>
 
@@ -86,9 +86,9 @@ function HeroSection() {
         <div className='h-150 w-full flex max-[700px]:h-172.5 max-[700px]:flex-col'>
           <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[64%]
                           max-[700px]:w-full max-[700px]:h-104.75 max-[700px]:order-2">
-            <div className='w-96.75 h-76 max-[700px]:w-[318px] max-[700px]:h-[275px]'>
+            <div className='w-96.75 h-76 max-[700px]:w-79.5 max-[700px]:h-68.75'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12
-                              max-[700px]:text-[32px] max-[700px]:leading-[40px] max-[700px]:tracking-[3.33px]">
+                              max-[700px]:text-[32px] max-[700px]:leading-10 max-[700px]:tracking-[3.33px]">
                   DESIGNED FOR EVERYONE
                 </h1>
 
