@@ -3,6 +3,8 @@ import siteLogoFooter from "../../../../public/photosnap-white.svg"
 import Image from 'next/image'
 import NavButtons from '@/components/atoms/NavButtons/NavButtons'
 import HomePageButton from '@/components/atoms/HomePageButton/HomePageButton'
+import { FacebookIcon, YoutubeIcon, TwitterIcon, PinterestIcon, InstagramIcon } from '@/components/atoms/SocialIcons/SocialIcons'
+
 function Footer() {
   return (
     <div>
@@ -13,11 +15,12 @@ function Footer() {
               <Image src={siteLogoFooter} alt='Website Logo'/>
             </div>
 
-            <div className='flex gap-[13.33px] row-start-2 md:row-start-3 lg:row-start-2 lg:col-start-1 self-end md:mt-18 lg:mt-0'>
-              <div className='text-white'>OO</div>
-              <div className='text-white'>OO</div>
-              <div className='text-white'>OO</div>
-              <div className='text-white'>OO</div>
+            <div className='flex items-center gap-[13.33px] row-start-2 md:row-start-3 lg:row-start-2 lg:col-start-1 self-end md:mt-18 lg:mt-0'>
+              <div> <FacebookIcon/> </div>
+              <div> <YoutubeIcon/> </div>
+              <div> <TwitterIcon/> </div>
+              <div> <PinterestIcon/> </div>
+              <div> <InstagramIcon/> </div>
             </div>
 
             <div className='mt-12.25 md:mt-0 flex flex-col gap-4.25 row-start-3 md:flex-row md:gap-6.5 md:row-start-2 md:items-center lg:flex-col lg:gap-4.25 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:justify-self-start lg:items-start'>
