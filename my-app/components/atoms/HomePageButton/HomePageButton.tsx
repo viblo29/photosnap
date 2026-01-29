@@ -1,4 +1,3 @@
-
 import React from 'react'
 import RightArrowIcon from '../RightArrowIcon/RightArrowIcon'
 
@@ -14,12 +13,16 @@ function HomePageButton({ text, textColor, gap }: HomePageButtonProps) {
 
   return (
     <div>
-        <button className={`font-bold text-xs tracking-[2px] flex justify-center cursor-pointer hover:underline ${gapClass} ${textColorClass}`}>
+      <button className={`font-bold text-xs tracking-[2px] flex items-center cursor-pointer ${gapClass} ${textColorClass} group`}>
+        <span className="border-b border-transparent transition-all duration-300 ease-in-out group-hover:border-current py-0.5">
           {text}
-            <div>
-                <RightArrowIcon arrowColor={textColor}/>
-            </div>
-        </button>
+        </span>
+
+        <div className="flex items-center">
+          <RightArrowIcon arrowColor={textColor}/>
+        </div>
+        
+      </button>
     </div>
   )
 }
