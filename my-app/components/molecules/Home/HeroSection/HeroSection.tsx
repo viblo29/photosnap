@@ -7,7 +7,7 @@ function HeroSection() {
       {/* Section 1 */}
         <div className='h-162.5 w-full flex'>
           <div className="bg-black text-white w-[42%] h-162.5 flex justify-center items-center relative
-                          max-[1200px]:w-[60%]">
+                          max-[1200px]:w-[64%]">
             
             <div className="absolute w-1.5 h-76 inset-0 top-43.25">
               <img src='/images/line.svg' alt="" />
@@ -33,7 +33,7 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="w-[58%] h-162.5   max-[1200px]:w-[40%]">
+          <div className="w-[58%] h-162.5   max-[1200px]:w-[36%]">
             <img
             src='/images/N1.webp' 
             className='w-full h-full object-cover'/>
@@ -42,13 +42,13 @@ function HeroSection() {
 
       {/* Section 2 */}
         <div className='h-150 w-screen flex'>
-          <div className="w-[58%]  max-[1200px]:w-[40%] overflow-hidden">
+          <div className="w-[58%]  max-[1200px]:w-[36%] overflow-hidden">
             <img
             src='/images/N2.webp' 
             className='h-full w-full object-cover object-[30%_center]'/>
           </div>
 
-          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[60%]">
+          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[64%]">
             <div className='w-96.75 h-82.25'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   BEAUTIFUL STORIES <br />EVERY TIME
@@ -72,7 +72,7 @@ function HeroSection() {
 
       {/* Section 3 */}
         <div className='h-150 w-full flex'>
-          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[60%]">
+          <div className="bg-white text-black w-[42%] h-150 flex justify-center items-center  max-[1200px]:w-[64%]">
             <div className='w-96.75 h-76'>
                 <h1 className="text-[40px] font-bold tracking-[4.17px] leading-12">
                   DESIGNED FOR EVERYONE
@@ -93,7 +93,7 @@ function HeroSection() {
             </div>
           </div>
 
-          <div className="w-[58%]  max-[1200px]:w-[40%] overflow-hidden">
+          <div className="w-[58%]  max-[1200px]:w-[36%] overflow-hidden">
             <img
             src='/images/N3.webp' 
             className='h-full w-full object-cover object-center'/>

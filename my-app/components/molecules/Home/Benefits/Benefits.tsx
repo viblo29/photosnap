@@ -2,11 +2,17 @@ import React from 'react'
 
 function Benefits() {
   return (
-    <div className='w-screen h-115 flex justify-center items-center max-[1200px]:h-250 max-[1200px]:justify-between max-[1200px]:p-22 '>
-        <div className='h-59 w-277.5 flex justify-between max-[1200px]:w-full max-[1200px]:h-full max-[1200px]:flex-col max-[1200px]:items-center'>
+    <div className='w-screen h-115 flex justify-center items-center 
+                    max-[1200px]:h-250 max-[1200px]:justify-between max-[1200px]:p-22 
+                    max-[540px]:px-10 max-[540px]:py-20'>
+        <div className='h-59 w-277.5 flex justify-between 
+                    max-[1200px]:w-full max-[1200px]:h-full max-[1200px]:flex-col max-[1200px]:items-center
+                    max-[540px]:'>
 
            {/* box1 */}
-            <div className="w-87.5 h-59 flex flex-col justify-between items-center max-[1200px]:w-114.25">
+            <div className="w-87.5 h-59 flex flex-col justify-between items-center 
+                            max-[1200px]:w-114.25
+                            max-[540px]:w-77.5 max-[540px]:h-59">
                 <div className='w-18 h-18 flex items-center'>
                     <img src="/images/Shape1.svg" alt="" />
                 </div>
@@ -17,7 +23,9 @@ function Benefits() {
             </div> 
 
             {/* box2 */}
-             <div className="w-87.5 h-59 flex flex-col justify-between items-center max-[1200px]:w-114.25">
+             <div className="w-87.5 h-59 flex flex-col justify-between items-center 
+                            max-[1200px]:w-114.25
+                            max-[540px]:w-77.5 max-[540px]:h-59">
                 <div className='w-18 h-18 flex items-center'>
                     <img src="/images/Shape2.svg" alt="" />
                 </div>
@@ -28,7 +36,9 @@ function Benefits() {
             </div>  
 
             {/* box3 */}
-            <div className="w-87.5 h-59 flex flex-col justify-between items-center max-[1200px]:w-114.25">
+            <div className="w-87.5 h-59 flex flex-col justify-between items-center 
+                            max-[1200px]:w-114.25
+                            max-[540px]:w-77.5 max-[540px]:h-59">
                 <div className='w-18 h-18 flex items-center'>
                     <img src="/images/Shape3.svg" alt="" />
                 </div>
