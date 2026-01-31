@@ -1,5 +1,5 @@
 import React from 'react'
-import siteLogoFooter from "../../../../public/photosnap-white.svg"
+import siteLogoFooter from "../../../public/photosnap-white.svg"
 import Image from 'next/image'
 import NavButtons from '@/components/atoms/NavButtons/NavButtons'
 import HomePageButton from '@/components/atoms/HomePageButton/HomePageButton'

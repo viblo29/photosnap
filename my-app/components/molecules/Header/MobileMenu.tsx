@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import siteLogo from "../../../../public/photosnap-black.svg";
+import siteLogo from "../../../public/photosnap-black.svg";
 import NavButtons from "@/components/atoms/NavButtons/NavButtons";
 
 function MobileMenu() {
