@@ -1,5 +1,5 @@
-import Footer from '@/components/molecules/Home/Footer/Footer'
-import Header from '@/components/molecules/Home/Header/Header'
+import Footer from '@/components/molecules/Footer/Footer'
+import Header from '@/components/molecules/Header/Header'
 import HeroStory from '@/components/molecules/Stories/HeroStory/HeroStory'
 import StoriesSection from '@/components/molecules/Stories/StoriesSection/StoriesSection'
 import React from 'react'

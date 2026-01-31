@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import siteLogo from '../../../../public/photosnap-black.svg'
-import NavButtons from '@/components/atoms/NavButtons/NavButtons'
+import siteLogo from '../../../public/photosnap-black.svg'
 import MobileMenu from './MobileMenu'
+import NavButtons from '@/components/atoms/NavButtons/NavButtons'
 
 function Header() {
   return (
