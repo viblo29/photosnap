@@ -16,11 +16,11 @@ function HeroStory() {
                           group-hover:opacity-100
                           transition-opacity duration-300
                           pointer-events-none'></div>
-          <div className='absolute left-24 top-30 z-3 w-96.75 h-102 flex flex-col items-start justify-between text-white    
+          <div className='absolute left-24 top-30 z-3 w-96.75 h-105 flex flex-col items-start justify-between text-white    
                           max-[800px]:left-10 
-                          max-[470px]:relative max-[470px]:top-15'>
+                          max-[470px]:relative max-[470px]:top-13 max-[470px]:w-79.5 max-[470px]:left-8'>
               <div className='h-4 font-bold text-[12px] leading-[100%] tracking-[2px]'>LAST MONTH’S FEATURED STORY</div>
-              <div className='h-36 font-bold text-[40px] leading-12 tracking-[4.17px]'>HAZY FULL MOON OF APPALACHIA</div>
+              <div className='h-36 font-bold text-[40px] leading-12 tracking-[4.17px] max-[470px]:text-[32px] max-[470px]:'>HAZY FULL MOON OF APPALACHIA</div>
               <div className='flex gap-2 font-normal text-[13px] leading-[100%] '>
                 <span className='opacity-75'>March 2nd 2020</span>
                 <span className='opacity-100'>by John Appleseed</span>
