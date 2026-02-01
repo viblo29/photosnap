@@ -34,9 +34,9 @@ function Stories() {
 
           {/* INVISIBLE CONT (gasazomad)*/}
           <div className="pointer-events-none opacity-0">
-            <div className="px-10 pb-5 pt-90.25 flex flex-col items-start">
-              <div className="flex flex-col items-start">
-                <div className="mb-4 text-white">
+            <div className="px-10 pb-5 pt-90.25 flex flex-col  items-start">
+              <div className="flex flex-col items-start ">
+                <div className="mb-4 text-white w-full">
                   <h1 className="font-['DM_Sans',sans-serif] font-bold text-[18px] leading-6.25 tracking-[0px] mb-1">
                     {story.title}
                   </h1>
@@ -44,7 +44,7 @@ function Stories() {
                     by {story.author}
                   </p>
                 </div>
-                <div className="mb-5 h-px bg-gray-500 w-70" />
+                <div className="mb-5 h-px bg-gray-500 w-full" />
                 <div className="h-10 w-32 bg-transparent" />
               </div>
             </div>
@@ -64,7 +64,7 @@ function Stories() {
             }}
           >
             <div className="mb-10 mt-90.25 flex flex-col items-start">
-              <div className="mb-4 text-white">
+              <div className="mb-4 text-white w-full">
                 <h1 className="font-['DM_Sans',sans-serif] font-bold text-[18px] leading-6.25 tracking-[0px] mb-1">
                   {story.title}
                 </h1>
@@ -73,9 +73,9 @@ function Stories() {
                 </p>
               </div>
 
-              <div className="mb-5 h-px bg-gray-500 w-70" />
+              <div className="mb-5 h-px bg-gray-500 w-full" />
 
-              <StoryButton width='280px' />
+              <StoryButton width='100%' />
             </div>
           </div>
 
