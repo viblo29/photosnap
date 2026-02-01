@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Link from 'next/link' // 1. Import Link
+import Link from 'next/link'
 import siteLogo from '../../../public/photosnap-black.svg'
 import MobileMenu from './MobileMenu'
 import NavButtons from '@/components/atoms/NavButtons/NavButtons'
