@@ -24,8 +24,8 @@ function Stories() {
     }
   ]
 
-  return (
-    <div className="flex w-screen">
+  return (  
+       <div className="grid w-screen grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
       {stories.map((story) => (
         <div
           key={story.title}
