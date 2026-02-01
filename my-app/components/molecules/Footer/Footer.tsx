@@ -1,6 +1,7 @@
 import React from 'react'
 import siteLogoFooter from "../../../public/photosnap-white.svg"
 import Image from 'next/image'
+import Link from 'next/link'
 import NavButtons from '@/components/atoms/NavButtons/NavButtons'
 import HomePageButton from '@/components/atoms/HomePageButton/HomePageButton'
 import { FacebookIcon, YoutubeIcon, TwitterIcon, PinterestIcon, InstagramIcon } from '@/components/atoms/SocialIcons/SocialIcons'
@@ -24,21 +25,29 @@ function Footer() {
             </div>
 
             <div className='items-center mt-12.25 md:mt-0 flex flex-col gap-4.25 row-start-3 md:flex-row md:gap-6.5 md:row-start-2 md:items-center lg:flex-col lg:gap-4.25 lg:col-start-2 lg:row-start-1 lg:row-span-2 lg:justify-self-start lg:items-start'>
-              <div><NavButtons text='HOME' textColor='white'/></div>
-              <div><NavButtons text='STORIES' textColor='white'/></div>
-              <div><NavButtons text='FEATURES' textColor='white'/></div>
-              <div><NavButtons text='PRICING' textColor='white'/></div>
+              <Link href="/">
+                <NavButtons text='HOME' textColor='white'/>
+              </Link>
+              <Link href="/stories">
+                <NavButtons text='STORIES' textColor='white'/>
+              </Link>
+              <Link href="/features">
+                <NavButtons text='FEATURES' textColor='white'/>
+              </Link>
+              <Link href="/pricing">
+                <NavButtons text='PRICING' textColor='white'/>
+              </Link>
             </div>
           </div>
         </div>
 
-
-
         <div className='flex flex-col mt-29.75 md:mt-0'>
           <div className='flex justify-center md:justify-end'>
-            <HomePageButton text='GET AN INVITE' textColor='white' gap={4.5}/>
+              <HomePageButton text='GET AN INVITE' textColor='white' gap={4.5}/>
           </div>
-          <div className='text-[15px] justify-center opacity-[0.5] text-white mt-8.5 md:mt-30 lg:mt-21.5'>Copyright 2019. All Rights Reserved</div>
+          <div className='text-[15px] justify-center opacity-[0.5] text-white mt-8.5 md:mt-30 lg:mt-21.5'>
+            Copyright 2019. All Rights Reserved
+          </div>
         </div>
         
       </div>
