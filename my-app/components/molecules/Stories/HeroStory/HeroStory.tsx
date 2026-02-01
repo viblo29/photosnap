@@ -5,7 +5,7 @@ function HeroStory() {
   return (
       <div className='relative w-screen h-162.5 
                     bg-[url("/images/Bitmap.webp")] bg-cover bg-center 
-                    
+                    max-[800px]:bg-[url("/images/Bitmap.png")]
                     flex justify-start items-center pl-28 group'>
           <div className='absolute inset-0 bg-[url("/images/StoryActive.svg")]
                           bg-cover bg-center
