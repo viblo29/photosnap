@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import siteLogo from "../../../public/photosnap-black.svg";
 import NavButtons from "@/components/atoms/NavButtons/NavButtons";
+import Link from "next/link";
 
 function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,9 +23,9 @@ function MobileMenu() {
 
       <div className="md:hidden relative z-50">
         <div className="w-full h-18 bg-white flex justify-between items-center px-6">
-          <div>
+          <Link href="/">
             <Image src={siteLogo} alt="Website Logo" />
-          </div>
+          </Link>
 
           <button
             onClick={toggleMenu}
@@ -50,9 +51,15 @@ function MobileMenu() {
         >
           <div className="flex flex-col items-center pt-8">
             <div className="flex flex-col items-center gap-5 mb-5">
-              <NavButtons text="Stories" textColor="black" />
-              <NavButtons text="FEATURES" textColor="black" />
-              <NavButtons text="PRICING" textColor="black" />
+              <Link href="/stories">
+              <NavButtons text="Stories" textColor="black"/>
+              </Link>
+              <Link href="/features">
+                <NavButtons text="FEATURES" textColor="black"/>
+              </Link>
+              <Link href="/pricing">
+                <NavButtons text="PRICING" textColor="black"/>
+              </Link>
             </div>
 
             <div className="w-77.5 h-px bg-black opacity-25 mb-5" />
