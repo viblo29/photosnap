@@ -3,17 +3,22 @@ import React from 'react'
 
 function HeroStory() {
   return (
-      <div className='relative w-screen h-162.5 
-                    bg-[url("/images/Bitmap.webp")] bg-cover bg-center 
-                    max-[800px]:bg-[url("/images/Bitmap.png")]
-                    flex justify-start items-center pl-28 group'>
-          <div className='absolute inset-0 bg-[url("/images/StoryActive.svg")]
+      <div className='relative w-screen h-162.5 overflow-hidden group
+                      max-[470px]:h-210 max-[470px]:bg-black max-[470px]:flex max-[470px]:flex-col'>
+          <img src="/images/Bitmap.webp" alt="Hero Story Background" 
+                className='absolute inset-0 left-0 z-1   w-full h-full object-cover object-center
+                            max-[800px]:object-[70%_50%]
+                            max-[470px]:h-79.25 max-[470px]:relative'/>
+
+          <div className='absolute inset-0 z-2 bg-[url("/images/StoryActive.svg")]
                           bg-cover bg-center
                           opacity-0
                           group-hover:opacity-100
                           transition-opacity duration-300
                           pointer-events-none'></div>
-          <div className='w-96.75 h-102 flex flex-col items-start justify-between text-white'>
+          <div className='absolute left-24 top-30 z-3 w-96.75 h-102 flex flex-col items-start justify-between text-white    
+                          max-[800px]:left-10 
+                          max-[470px]:relative max-[470px]:top-15'>
               <div className='h-4 font-bold text-[12px] leading-[100%] tracking-[2px]'>LAST MONTH’S FEATURED STORY</div>
               <div className='h-36 font-bold text-[40px] leading-12 tracking-[4.17px]'>HAZY FULL MOON OF APPALACHIA</div>
               <div className='flex gap-2 font-normal text-[13px] leading-[100%] '>
