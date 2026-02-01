@@ -81,6 +81,7 @@ function Stories() {
       image: "/images/story_9.svg"
     },
     {
+
       date: "March 4th 2020",
       title: "Night at The Dark Forest",
       author: "by  Mohammed Abdul",
@@ -108,7 +109,6 @@ function Stories() {
           className="relative group w-full h-125 cursor-pointer"
         >
 
-          {/* INVISIBLE CONT */}
           <div className="pointer-events-none opacity-0">
             <div className="px-10 pb-5 pt-90.25 flex flex-col items-start">
               <div className="flex flex-col items-start">
@@ -126,7 +126,6 @@ function Stories() {
             </div>
           </div>
 
-          {/* MAIN CONT */}
           <div
             className="
             
@@ -158,7 +157,6 @@ function Stories() {
             </div>
           </div>
 
-          {/* BORDER DIV */}
           <div className="
             absolute
             bottom-0 left-0 right-0
