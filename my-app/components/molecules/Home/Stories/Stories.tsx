@@ -5,22 +5,22 @@ function Stories() {
     {
       title: "The Mountains",
       author: "John Appleseed",
-      image: "/images/mountain_story.svg"
+      image: "/images/mountain_story.webp"
     },
     {
       title: "Sunset Cityscapes",
       author: "Benjamin Cruz",
-      image: "/images/city_story.svg"
+      image: "/images/city_story.webp"
     },
     {
       title: "18 Days Voyage",
       author: "Alexei Borodin",
-      image: "/images/man_walking_story.svg"
+      image: "/images/man_walking_story.webp"
     },
     {
       title: "Architecturals",
       author: "Samantha Brooke",
-      image: "/images/round_building_story.svg"
+      image: "/images/round_building_story.webp"
     }
   ]
 
