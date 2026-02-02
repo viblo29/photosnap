@@ -22,7 +22,7 @@ function Subscription() {
           </div>
           <button
             onClick={handleToggle}
-            className={`w-16 h-8 rounded-2xl flex items-center p-1 transition-colors duration-300 ${
+            className={`w-16 h-8 rounded-2xl cursor-pointer flex items-center p-1 transition-colors duration-300 ${
               isYearly ? 'bg-black' : 'bg-[#DFDFDF]'
             }`}
           >
