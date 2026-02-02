@@ -1,14 +1,8 @@
-import React from 'react'
 
-interface HomePageButtonProps {
-  width: string
-}
-
-function StoryButton({ width }: HomePageButtonProps) {
+function StoryButton() {
   return (
     <button
-      style={{ width: width }}
-      className="font-bold text-xs tracking-[2px] flex items-center  text-white cursor-pointer justify-between"
+      className="w-full font-bold text-xs tracking-[2px] flex items-center  text-white cursor-pointer justify-between"
     >
       READ STORY
       <img src="/images/story_arrow.svg" alt="arrow" />
