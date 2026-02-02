@@ -49,8 +49,8 @@ function MobileMenu() {
             isMenuOpen ? "h-63.25" : "h-0"
           }`}
         >
-          <div className="flex flex-col items-center pt-8">
-            <div className="flex flex-col items-center gap-5 mb-5">
+          <div className="flex flex-col items-center py-7.75">
+            <div className="flex flex-col items-center gap-4.25 mb-4.25">
               <Link href="/stories">
               <NavButtons text="Stories" textColor="black"/>
               </Link>
