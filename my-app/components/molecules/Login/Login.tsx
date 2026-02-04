@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 type Props = {
@@ -18,24 +18,29 @@ type FormData = {
 
 const Login = ({ buttonClassName }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false); 
   const [mode, setMode] = useState<Mode>("login");
+  const [loggedInUser, setLoggedInUser] = useState<string | null>(null); 
 
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-    reset,
-  } = useForm<FormData>();
-
+  const { register, handleSubmit, watch, formState: { errors }, reset } = useForm<FormData>();
   const passwordValue = watch("password");
 
   const onSubmit = (data: FormData) => {
     console.log("Form Data:", data);
-    setIsOpen(false);
+    setLoggedInUser(data.username); 
+    setShowModal(false);
+    setTimeout(() => setIsOpen(false), 300); 
     reset();
-    setMode("login"); // დაბრუნება საწყის ლოგინზე
+    setMode("login");
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      setShowModal(false);       
+      const timeout = setTimeout(() => setShowModal(true), 50);
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen]);
 
   const buttonClasses =
     "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out py-2 rounded-md w-full";
@@ -49,37 +54,45 @@ const Login = ({ buttonClassName }: Props) => {
           "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out font-bold text-xs tracking-[2px] px-6 py-3 rounded-md"
         }
       >
-        LOG IN
+        {loggedInUser ? loggedInUser : "LOG IN"} 
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
-          {/* Overlay */}
+          
           <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
-          />
+                className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+                    showModal ? "opacity-100" : "opacity-0"
+                }`}
+                onClick={() => {
+                    setShowModal(false);
+                    setTimeout(() => setIsOpen(false), 300);
+                }}
+        />
 
-          {/* Modal content */}
-          <div className="relative bg-white w-full max-w-md p-8 rounded-lg shadow-lg">
+          
+          <div
+            className={`relative bg-white/90 w-full max-w-md p-8 rounded-lg shadow-lg transform transition-all duration-300 ease-out
+              ${showModal ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
+          >
             <button
-              onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer transition-colors duration-300 ease-in-out"
-            >
-              ✕
+                onClick={() => {
+                    setShowModal(false);
+                    setTimeout(() => setIsOpen(false), 300);
+                }}
+                className="absolute top-4 right-4 text-gray-500 hover:text-black cursor-pointer transition-colors duration-300 ease-in-out"
+                >
+                ✕
             </button>
 
+            
             {mode === "login" && (
               <>
-                <h2 className="text-2xl font-semibold text-center mb-6">
-                  Log in
-                </h2>
-
+                <h2 className="text-2xl font-semibold text-center mb-6">Log in</h2>
                 <form
                   onSubmit={handleSubmit(() => setMode("newUser"))}
                   className="space-y-4"
                 >
-                  {/* Username */}
                   <div className="w-full">
                     <input
                       type="text"
@@ -97,7 +110,6 @@ const Login = ({ buttonClassName }: Props) => {
                     )}
                   </div>
 
-                  {/* Password */}
                   <div className="w-full">
                     <input
                       type="password"
@@ -107,10 +119,7 @@ const Login = ({ buttonClassName }: Props) => {
                       }`}
                       {...register("password", {
                         required: "Password cannot be empty",
-                        minLength: {
-                          value: 6,
-                          message: "Password must be at least 6 characters",
-                        },
+                        minLength: { value: 6, message: "Password must be at least 6 characters" },
                       })}
                     />
                     {errors.password && (
@@ -118,9 +127,7 @@ const Login = ({ buttonClassName }: Props) => {
                     )}
                   </div>
 
-                  <button type="submit" className={buttonClasses}>
-                    Log in
-                  </button>
+                  <button type="submit" className={buttonClasses}>Log in</button>
                 </form>
               </>
             )}
@@ -128,10 +135,8 @@ const Login = ({ buttonClassName }: Props) => {
             {mode === "newUser" && (
               <>
                 <p className="text-center mb-6">
-                  Looks like a new user. <br />
-                  Please sign up.
+                  Looks like a new user. <br />Please sign up.
                 </p>
-
                 <button
                   onClick={() => setMode("signup")}
                   className={buttonClasses}
@@ -143,12 +148,9 @@ const Login = ({ buttonClassName }: Props) => {
 
             {mode === "signup" && (
               <>
-                <h2 className="text-2xl font-semibold text-center mb-6">
-                  Sign Up
-                </h2>
-
+                <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                  {/* Username */}
+                  
                   <div className="w-full">
                     <input
                       type="text"
@@ -166,7 +168,6 @@ const Login = ({ buttonClassName }: Props) => {
                     )}
                   </div>
 
-                  {/* Email */}
                   <div className="w-full">
                     <input
                       type="email"
@@ -187,7 +188,6 @@ const Login = ({ buttonClassName }: Props) => {
                     )}
                   </div>
 
-                  {/* Password */}
                   <div className="w-full">
                     <input
                       type="password"
@@ -197,10 +197,7 @@ const Login = ({ buttonClassName }: Props) => {
                       }`}
                       {...register("password", {
                         required: "Password cannot be empty",
-                        minLength: {
-                          value: 6,
-                          message: "Password must be at least 6 characters",
-                        },
+                        minLength: { value: 6, message: "Password must be at least 6 characters" },
                       })}
                     />
                     {errors.password && (
@@ -208,7 +205,6 @@ const Login = ({ buttonClassName }: Props) => {
                     )}
                   </div>
 
-                  {/* Confirm Password */}
                   <div className="w-full">
                     <input
                       type="password"
