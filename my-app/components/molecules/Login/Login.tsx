@@ -48,13 +48,17 @@ const Login = ({ buttonClassName }: Props) => {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setMode("login"); 
+          reset();    
+          setIsOpen(true);
+        }}
         className={
           buttonClassName ??
           "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out font-bold text-xs tracking-[2px] px-6 py-3 rounded-md"
         }
       >
-        {loggedInUser ? loggedInUser : "LOG IN"} 
+        {loggedInUser ? loggedInUser : "LOG IN"}
       </button>
 
       {isOpen && (
