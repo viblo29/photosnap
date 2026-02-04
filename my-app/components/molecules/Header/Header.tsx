@@ -3,6 +3,7 @@ import Link from 'next/link'
 import siteLogo from '../../../public/photosnap-black.svg'
 import MobileMenu from './MobileMenu'
 import NavButtons from '@/components/atoms/NavButtons/NavButtons'
+import Login from '@/components/molecules/Login/Login'
 
 function Header() {
   return (
@@ -27,9 +28,9 @@ function Header() {
             </Link>
           </div>
 
-            <button className='font-bold text-xs tracking-[2px] px-6 py-3 bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out'>
-              GET AN INVITE
-            </button>
+            <Login
+              buttonClassName="font-bold text-xs tracking-[2px] px-6 py-3 bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out"
+            />
         </div>
       </div>
 

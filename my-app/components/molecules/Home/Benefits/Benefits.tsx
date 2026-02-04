@@ -5,7 +5,7 @@ function Benefits() {
     <div className='w-screen h-115 flex justify-center items-center 
                     max-[1200px]:h-250 max-[1200px]:justify-between max-[1200px]:p-22 
                     max-[540px]:px-10 max-[540px]:py-20'>
-        <div className='h-59 w-277.5 flex justify-between 
+        <div className='h-59 w-[83%] flex justify-between 
                     max-[1200px]:w-full max-[1200px]:h-full max-[1200px]:flex-col max-[1200px]:items-center
                     max-[540px]:'>
 
