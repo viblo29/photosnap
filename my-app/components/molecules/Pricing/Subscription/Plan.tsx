@@ -10,9 +10,10 @@ interface PlanProps {
   backgroundColor: "black" | "gray";
   isMiddle?: boolean;
   isYearly: boolean;
+  onPickPlan: () => void;
 }
 
-function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly }: PlanProps) {
+function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly, onPickPlan }: PlanProps) {
   const bgColor = backgroundColor === "black" ? "bg-black" : "bg-[#F5F5F5]";
   const textColor = backgroundColor === "black" ? "text-white" : "text-black";
   const buttonClasses =
@@ -49,6 +50,7 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly }: Pl
           </div>
 
           <button
+            onClick={onPickPlan}
             className={`w-full h-10 font-bold cursor-pointer text-[12px] tracking-[2px] uppercase ${buttonClasses} transition-colors duration-300 ease-in-out`}
           >
             Pick Plan
@@ -75,6 +77,7 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly }: Pl
           </div>
           
           <button
+            onClick={onPickPlan}
             className={`w-67.5 h-10 font-bold cursor-pointer text-[12px] tracking-[2px] uppercase ${buttonClasses} transition-colors duration-300 ease-in-out`}
           >
             Pick Plan
@@ -112,6 +115,7 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly }: Pl
           </div>
 
           <button
+            onClick={onPickPlan}
             className={`w-61.25 h-10 font-bold cursor-pointer text-[12px] tracking-[2px] uppercase ${buttonClasses} transition-colors duration-300 ease-in-out`}
           >
             Pick Plan
