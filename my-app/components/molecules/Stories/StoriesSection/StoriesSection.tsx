@@ -163,7 +163,8 @@ export default function Stories() {
           bg-linear-to-tr from-[#FFC593] via-[#BC7198] to-[#5A77FF] 
           text-white font-bold text-[36px]
           flex items-center justify-center
-          shadow-lg`}
+          shadow-lg cursor-pointer
+          transition duration-300 hover:scale-105`}
       >
         +
       </button>
@@ -280,7 +281,7 @@ export default function Stories() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 w-screen">
         {stories.map((story) => (
           <div
             key={story.title}
