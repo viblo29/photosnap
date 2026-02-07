@@ -70,9 +70,7 @@ const Login = ({ buttonClassName }: Props) => {
 
   return (
     <>
-      <div className="relative inline-block" 
-        // tabIndex={0} onBlur={() => setShowUserMenu(false)}
-      >
+      <div className="relative inline-block" >
         <button
           onClick={() => {
             if (loggedInUser) {
@@ -222,8 +220,7 @@ const Login = ({ buttonClassName }: Props) => {
                     <button
                       type="button"
                       onClick={() => setMode("signup")}
-                      className="font-semibold underline hover:text-gray-600 transition-colors cursor-pointer"
-                    >
+                      className="font-semibold underline hover:text-gray-600 transition-colors cursor-pointer" >
                       Sign up
                     </button>
                   </p>
@@ -339,8 +336,7 @@ const Login = ({ buttonClassName }: Props) => {
           <div
             className="relative bg-white/90 w-full max-w-md p-8 rounded-lg shadow-lg
                       transform transition-all duration-300 ease-out
-                      opacity-100 scale-100 text-center"
-          >
+                      opacity-100 scale-100 text-center" >
             <div className="text-4xl mb-4">✨</div>
             <p className="text-lg">
               Welcome <strong>{successUser}</strong>

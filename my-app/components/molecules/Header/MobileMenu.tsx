@@ -15,7 +15,7 @@ function MobileMenu() {
 
   return (
     <>
-      {/* Overlay when mobile menu is open */}
+
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -23,7 +23,6 @@ function MobileMenu() {
         />
       )}
 
-      {/* Header */}
       <div className="md:hidden fixed top-0 left-0 w-full z-50 bg-white shadow-md">
         <div className="w-full h-18 flex justify-between items-center px-6">
           <Link href="/">
@@ -47,7 +46,6 @@ function MobileMenu() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
         <div
           className={`absolute top-18 left-0 w-full bg-white transition-all duration-300 ease-in-out
             ${isMenuOpen ? "h-63.25 overflow-visible" : "h-0 overflow-hidden"}
