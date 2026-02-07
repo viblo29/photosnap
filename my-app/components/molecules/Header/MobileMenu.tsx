@@ -49,9 +49,9 @@ function MobileMenu() {
 
         {/* Mobile Menu */}
         <div
-          className={`absolute top-18 left-0 w-full bg-white overflow-hidden transition-all duration-300 ease-in-out ${
-            isMenuOpen ? "h-63.25" : "h-0"
-          }`}
+          className={`absolute top-18 left-0 w-full bg-white transition-all duration-300 ease-in-out
+            ${isMenuOpen ? "h-63.25 overflow-visible" : "h-0 overflow-hidden"}
+          `}
         >
           <div className={`flex flex-col items-center py-7.75 transition-opacity duration-200
             ${isMenuOpen ? "opacity-100" : "opacity-0"}
