@@ -1,9 +1,10 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import StoryButton from '@/components/atoms/StoryButton/StoryButton'
+
 export default function Stories() {
-  const [stories, setStories] = useState([
+  const defaultStories = [
     {
       date: "April 16th 2020",
       title: "The Mountains",
@@ -90,7 +91,7 @@ export default function Stories() {
     },
     {
       date: "March 1st 2020",
-      title: "Somwarpet’s Beauty",
+      title: "Somwarpet's Beauty",
       author: "by Michelle",
       image: "/images/story_11.webp",
     },
@@ -100,14 +101,56 @@ export default function Stories() {
       author: "by William Malcolm",
       image: "/images/story_12.webp",
     },
-  ])
+  ]
 
+  const [stories, setStories] = useState<any[]>([])
   const [showForm, setShowForm] = useState(false)
   const [newTitle, setNewTitle] = useState('')
   const [newAuthor, setNewAuthor] = useState('')
   const [newDate, setNewDate] = useState('')
   const [newImageUrl, setNewImageUrl] = useState('')
+  const [isOnFooter, setIsOnFooter] = useState(false)
 
+
+  // local storage
+  useEffect(() => {
+    const saved = localStorage.getItem('stories')
+    if (saved) {
+      setStories(JSON.parse(saved))
+    } else {
+      setStories(defaultStories)
+      localStorage.setItem('stories', JSON.stringify(defaultStories))
+    }
+  }, [])
+
+
+  //footer detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('#main-footer')
+
+      if (!footer) return
+
+      const footerPlace = footer.getBoundingClientRect()
+      const buttonBottom = window.innerHeight - 80
+
+      if (footerPlace.top < buttonBottom) {
+        setIsOnFooter(true)
+      } else {
+        setIsOnFooter(false)
+      }
+    }
+
+
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // form handler
   function openForm() {
     setShowForm(true)
   }
@@ -120,21 +163,27 @@ export default function Stories() {
     setNewImageUrl('')
   }
 
+  // file reader
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0]
-
-    if (file) {
-      const url = URL.createObjectURL(file)
-      setNewImageUrl(url)
-    } else {
-      setNewImageUrl('')
+    const file = event.target.files?.[0];
+    if (!file) {
+      setNewImageUrl('');
+      return;
     }
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const base64String = reader.result as string;
+      setNewImageUrl(base64String);
+    };
+
+    reader.readAsDataURL(file);
   }
 
+  // submit handler
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-
-  
 
     const newStory = {
       title: newTitle,
@@ -145,6 +194,7 @@ export default function Stories() {
 
     const updatedStories = [newStory, ...stories]
     setStories(updatedStories)
+    localStorage.setItem('stories', JSON.stringify(updatedStories))
 
     setNewTitle('')
     setNewAuthor('')
@@ -158,17 +208,24 @@ export default function Stories() {
       <button
         onClick={openForm}
         className={`
-          fixed bottom-4 right-8 z-20
-          rounded-full w-16 h-16
-          bg-linear-to-tr from-[#FFC593] via-[#BC7198] to-[#5A77FF] 
-          text-white font-bold text-[36px]
-          flex items-center justify-center
-          shadow-lg cursor-pointer
-          transition duration-300 hover:scale-105`}
+    fixed bottom-4 right-8 z-20
+    w-16 h-16
+    font-bold text-[36px]
+    flex items-center justify-center
+    shadow-2xl
+    transition-all duration-300 hover:scale-110   
+  
+        ${isOnFooter
+            ? 'bg-white text-black rounded-xl '
+            : 'bg-black text-white rounded-xl '
+          }
+          `}
+
       >
         +
       </button>
 
+      {/* form */}
       {showForm && (
         <div
           onClick={closeForm}
@@ -206,7 +263,7 @@ export default function Stories() {
                     value={newAuthor}
                     onChange={(e) => setNewAuthor(e.target.value)}
                     placeholder="by Your Name"
-                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-[16px]"
+                    className="w-full p-3 border rounded-lg text-[16px]"
                     required
                   />
                 </div>
@@ -217,7 +274,7 @@ export default function Stories() {
                     value={newDate}
                     onChange={(e) => setNewDate(e.target.value)}
                     placeholder="e.g. April 16th 2025"
-                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 text-[16px]"
+                    className="w-full p-3 border rounded-lg text-[16px]"
                     required
                   />
                 </div>
@@ -228,7 +285,7 @@ export default function Stories() {
                     type="file"
                     accept="image/*"
                     onChange={handleFileChange}
-                    className="w-full p-3 rounded text-gray-500 border-black border-[1.5px] text-[16px]"
+                    className="w-full p-3 rounded-md text-gray-500 border-black border-[1.5px] text-[16px]"
                     required
                   />
                 </div>
@@ -238,8 +295,7 @@ export default function Stories() {
                     type="submit"
                     className="
                       flex-1 py-3 px-6 rounded-xl font-bold text-white text-[16px]
-                      bg-linear-to-r from-[#FFC593] via-[#BC7198] to-[#5A77FF]
-                    "
+                      bg-black"
                   >
                     Create Story
                   </button>
@@ -249,8 +305,7 @@ export default function Stories() {
                     onClick={closeForm}
                     className="
                       flex-1 py-3 px-6 rounded-xl border border-gray-300
-                      font-semibold text-[16px]
-                    "
+                      font-semibold text-[16px]"
                   >
                     Cancel
                   </button>
@@ -275,11 +330,12 @@ export default function Stories() {
 
                   <StoryButton width="100%" />
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+              </div >
+            </div >
+          </div >
+        </div >
+      )
+      }
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 w-screen">
         {stories.map((story) => (

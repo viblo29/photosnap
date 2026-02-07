@@ -8,7 +8,7 @@ import { FacebookIcon, YoutubeIcon, TwitterIcon, PinterestIcon, InstagramIcon } 
 
 function Footer() {
   return (
-    <div>
+    <div id="main-footer" className='w-screen'>
       <div className='w-full h-134.75 md:h-71 lg:h-62.5 bg-black flex flex-col md:flex-row items-center  md:justify-around'>
         <div className='flex mt-14 md:mt-0 lg:gap-27.5'>
           <div className='grid grid-cols-1 lg:grid-cols-2 lg:gap-27.5 lg:w-full'>
