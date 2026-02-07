@@ -70,7 +70,9 @@ const Login = ({ buttonClassName }: Props) => {
 
   return (
     <>
-      <div className="relative inline-block" tabIndex={0} onBlur={() => setShowUserMenu(false)}>
+      <div className="relative inline-block" 
+        // tabIndex={0} onBlur={() => setShowUserMenu(false)}
+      >
         <button
           onClick={() => {
             if (loggedInUser) {
@@ -91,39 +93,38 @@ const Login = ({ buttonClassName }: Props) => {
 
         {loggedInUser && (
           <div
-            className={`absolute right-0 mt-2 w-44 bg-white/90 backdrop-blur-md rounded-md shadow-lg overflow-hidden z-50
-              transform transition-all duration-200 ease-out origin-top
-              ${
-                showUserMenu
-                  ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
-                  : "opacity-0 scale-95 -translate-y-2 pointer-events-none"
-              }
+            className={`absolute right-0 mt-2 w-44 bg-white/90 backdrop-blur-md rounded-md shadow-lg z-50
+              overflow-hidden transition-all duration-300 ease-out
+              ${showUserMenu ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
             `}
           >
-            <button
-              type="button"
-              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                setShowUserMenu(false);
-                alert("Personal info (coming soon)");
-              }}
-            >
-              Personal info
-            </button>
+            <div className="flex flex-col">
+              <button
+                type="button"
+                className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                onClick={() => {
+                  setShowUserMenu(false);
+                  alert("Personal info (coming soon)");
+                }}
+              >
+                Personal info
+              </button>
 
-            <button
-              type="button"
-              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
-              onClick={() => {
-                setLoggedInUser(null);
-                setShowUserMenu(false);
-                localStorage.removeItem("photosnap-user");
-              }}
-            >
-              Log out
-            </button>
+              <button
+                type="button"
+                className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100 transition-colors"
+                onClick={() => {
+                  setLoggedInUser(null);
+                  setShowUserMenu(false);
+                  localStorage.removeItem("photosnap-user");
+                }}
+              >
+                Log out
+              </button>
+            </div>
           </div>
         )}
+
       </div>
 
       {isOpen && (
