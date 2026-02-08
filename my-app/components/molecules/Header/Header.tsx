@@ -1,6 +1,3 @@
-'use client'
-
-import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import siteLogo from '../../../public/photosnap-black.svg'
@@ -9,48 +6,9 @@ import NavButtons from '@/components/atoms/NavButtons/NavButtons'
 import Login from '@/components/molecules/Login/Login'
 
 function Header() {
-  const [isVisible, setIsVisible] = useState(true)
-  const lastScrollY = useRef(0)
-  const scrollTimeout = useRef<NodeJS.Timeout | null>(null)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY
-
-      if (currentScrollY < lastScrollY.current || currentScrollY < 10) {
-        setIsVisible(true)
-      } else if (currentScrollY > lastScrollY.current && currentScrollY > 10) {
-        setIsVisible(false)
-      }
-
-      lastScrollY.current = currentScrollY
-
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current)
-      }
-
-      scrollTimeout.current = setTimeout(() => {
-        setIsVisible(true)
-      }, 300)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current)
-      }
-    }
-  }, [])
-
   return (
     <>
-      <div 
-        className={`hidden md:block fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-transform duration-300 ease-in-out ${
-          isVisible ? 'translate-y-0' : '-translate-y-full'
-        }`}
-      >
+      <div className="hidden md:block fixed top-0 left-0 w-full z-50 bg-white shadow-md">
         <div className="w-full h-18 flex justify-around items-center">
           <Link href="/">
             <div className="cursor-pointer p-1 transition-opacity duration-300 hover:opacity-70">
