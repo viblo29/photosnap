@@ -3,7 +3,7 @@ import React from 'react'
 
 function HeroStory() {
   return (
-      <div className='relative w-screen h-162.5 overflow-hidden group z-0
+      <div className='relative w-screen h-162.5 overflow-hidden group z-0 mt-18
                       max-[470px]:h-210 max-[470px]:bg-black max-[470px]:flex max-[470px]:flex-col'>
           <img src="/images/Bitmap.webp" alt="Hero Story Background" 
                 className='absolute inset-0 left-0 z-1   w-full h-full object-cover object-center
