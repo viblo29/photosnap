@@ -25,7 +25,7 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly }: Pl
   const billingPeriod = isYearly ? "per year" : "per month";
 
   return (
-    <div>
+    <div >
       <div
         className={`hidden lg:flex ${bgColor} w-87.5 ${isMiddle ? "h-117.5" : "h-101.75"} ${textColor} flex-col items-center text-center`}
       >
