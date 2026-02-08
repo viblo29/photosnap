@@ -42,7 +42,7 @@ function AllBenefits() {
 
   return (
     <div
-      className="w-screen p-40 pt-8 flex items-center justify-between flex-wrap
+      className="w-screen  p-40 pt-8 flex items-center justify-between flex-wrap
                  max-[1100px]:p-20 max-[1100px]:pt-10
                  max-[900px]:px-9 max-[767px]:justify-center"
     >

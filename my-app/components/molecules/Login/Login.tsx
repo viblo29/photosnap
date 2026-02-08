@@ -29,6 +29,14 @@ const Login = ({ buttonClassName }: Props) => {
     shouldUnregister: true});
   const passwordValue = watch("password");
 
+  useEffect(() => {
+    const savedUser = localStorage.getItem("photosnap-user");
+    if (savedUser) {
+      const parsedUser = JSON.parse(savedUser);
+      setLoggedInUser(parsedUser.username);
+    }
+  }, []);
+
   const onSubmit = (data: FormData) => {
     const user = {
       username: data.username,

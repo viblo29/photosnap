@@ -15,7 +15,7 @@ interface Header2Props {
 
 function Header2({ h1, h2, images }: Header2Props) {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col mt-18'>
       <div className='block md:hidden'>
         <div>
           <Image src={images.mobile} alt='Header Picture'/>
