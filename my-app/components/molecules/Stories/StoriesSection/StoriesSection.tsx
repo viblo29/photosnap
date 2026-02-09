@@ -147,7 +147,6 @@ export default function Stories() {
     };
   }, []);
 
-  // Scroll animation observer
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
@@ -268,13 +267,19 @@ export default function Stories() {
                 my-8
               "
             >
-              {/* Form Section */}   
               <div className="w-full lg:w-1/2 p-6 sm:p-8">
-                <h2 className="text-[24px] sm:text-[30px] font-bold mb-4 sm:mb-5">Create New Story</h2>
+                <h2 className="text-[24px] sm:text-[30px] font-bold mb-4 sm:mb-5">
+                  Create New Story
+                </h2>
 
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col gap-4 sm:gap-6"
+                >
                   <div>
-                    <label className="block mb-2 font-medium text-sm sm:text-base">Title</label>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">
+                      Title
+                    </label>
                     <input
                       value={newTitle}
                       onChange={(e) => setNewTitle(e.target.value)}
@@ -285,7 +290,9 @@ export default function Stories() {
                   </div>
 
                   <div>
-                    <label className="block mb-2 font-medium text-sm sm:text-base">Author</label>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">
+                      Author
+                    </label>
                     <input
                       value={newAuthor}
                       onChange={(e) => setNewAuthor(e.target.value)}
@@ -296,7 +303,9 @@ export default function Stories() {
                   </div>
 
                   <div>
-                    <label className="block mb-2 font-medium text-sm sm:text-base">Date</label>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">
+                      Date
+                    </label>
                     <input
                       value={newDate}
                       onChange={(e) => setNewDate(e.target.value)}
@@ -307,7 +316,9 @@ export default function Stories() {
                   </div>
 
                   <div>
-                    <label className="block mb-2 font-medium text-sm sm:text-base">Image</label>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">
+                      Image
+                    </label>
                     <input
                       type="file"
                       accept="image/*"
@@ -351,9 +362,15 @@ export default function Stories() {
                   />
 
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
-                    <p className="text-xs sm:text-sm opacity-90 mb-1">{newDate || 'Date'}</p>
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">{newTitle || 'Story Title'}</h3>
-                    <p className="text-[12px] sm:text-[14px] opacity-90">{newAuthor || 'by Author Name'}</p>
+                    <p className="text-xs sm:text-sm opacity-90 mb-1">
+                      {newDate || "Date"}
+                    </p>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">
+                      {newTitle || "Story Title"}
+                    </h3>
+                    <p className="text-[12px] sm:text-[14px] opacity-90">
+                      {newAuthor || "by Author Name"}
+                    </p>
                     <div className="my-4 sm:my-5 h-px bg-white/40" />
 
                     <StoryButton width="100%" />
