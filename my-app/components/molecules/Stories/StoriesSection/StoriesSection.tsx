@@ -254,86 +254,112 @@ export default function Stories() {
           onClick={closeForm}
           className="
             fixed inset-0 z-50
-            flex items-center justify-center
-            bg-black/70 backdrop-blur-sm p-4
-          "
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="
-              w-full max-w-7xl bg-white rounded-2xl shadow-2xl
-              overflow-hidden flex 
+          bg-black/70 
+            backdrop-blur-sm
             "
-          >
-            <div className="flex-1 p-8 overflow-y-auto bg-gray-50">
-              <h2 className="text-[30px] font-bold mb-5">Create New Story</h2>
+        >
+          <div className="min-h-full flex items-center justify-center">
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="
+                w-full max-w-7xl bg-white rounded-2xl shadow-2xl
+                overflow-hidden 
+                flex flex-col lg:flex-row
+                my-8
+              "
+            >
+              {/* Form Section */}   
+              <div className="w-full lg:w-1/2 p-6 sm:p-8">
+                <h2 className="text-[24px] sm:text-[30px] font-bold mb-4 sm:mb-5">Create New Story</h2>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-                <div>
-                  <label className="block mb-2 font-medium">Title</label>
-                  <input
-                    value={newTitle}
-                    onChange={(e) => setNewTitle(e.target.value)}
-                    placeholder="e.g. Northern Lights Adventure"
-                    className="w-full p-3 border rounded-lg text-[16px]"
-                    required
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-6">
+                  <div>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">Title</label>
+                    <input
+                      value={newTitle}
+                      onChange={(e) => setNewTitle(e.target.value)}
+                      placeholder="e.g. Northern Lights Adventure"
+                      className="w-full p-2.5 sm:p-3 border rounded-lg text-[14px] sm:text-[16px]"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">Author</label>
+                    <input
+                      value={newAuthor}
+                      onChange={(e) => setNewAuthor(e.target.value)}
+                      placeholder="by Your Name"
+                      className="w-full p-2.5 sm:p-3 border rounded-lg text-[14px] sm:text-[16px]"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">Date</label>
+                    <input
+                      value={newDate}
+                      onChange={(e) => setNewDate(e.target.value)}
+                      placeholder="e.g. April 16th 2025"
+                      className="w-full p-2.5 sm:p-3 border rounded-lg text-[14px] sm:text-[16px]"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block mb-2 font-medium text-sm sm:text-base">Image</label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleFileChange}
+                      className="w-full p-2.5 sm:p-3 rounded-md text-gray-500 border-black border-[1.5px] text-[14px] sm:text-[16px]"
+                      required
+                    />
+                  </div>
+
+                  <div className="mt-2 sm:mt-4 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                    <button
+                      type="submit"
+                      className="
+                        w-full sm:flex-1 py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl font-bold text-white text-[14px] sm:text-[16px]
+                        bg-black hover:bg-gray-800 transition-colors"
+                    >
+                      Create Story
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={closeForm}
+                      className="
+                        w-full sm:flex-1 py-2.5 sm:py-3 px-4 sm:px-6 rounded-xl border border-gray-300
+                        font-semibold text-[14px] sm:text-[16px] hover:bg-gray-100 transition-colors"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              {/* Preview Section */}
+              <div className="w-full lg:w-1/2 bg-gray-900 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
+                <div className="w-full max-w-md aspect-3/4 relative rounded-xl overflow-hidden shadow-2xl">
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{
+                      backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.75)), url(${newImageUrl})`,
+                    }}
                   />
-                </div>
 
-                <div>
-                  <label className="block mb-2 font-medium">Author</label>
-                  <input
-                    value={newAuthor}
-                    onChange={(e) => setNewAuthor(e.target.value)}
-                    placeholder="by Your Name"
-                    className="w-full p-3 border rounded-lg text-[16px]"
-                    required
-                  />
-                </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
+                    <p className="text-xs sm:text-sm opacity-90 mb-1">{newDate || 'Date'}</p>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1">{newTitle || 'Story Title'}</h3>
+                    <p className="text-[12px] sm:text-[14px] opacity-90">{newAuthor || 'by Author Name'}</p>
+                    <div className="my-4 sm:my-5 h-px bg-white/40" />
 
-                <div>
-                  <label className="block mb-2 font-medium">Date</label>
-                  <input
-                    value={newDate}
-                    onChange={(e) => setNewDate(e.target.value)}
-                    placeholder="e.g. April 16th 2025"
-                    className="w-full p-3 border rounded-lg text-[16px]"
-                    required
-                  />
+                    <StoryButton width="100%" />
+                  </div>
                 </div>
-
-                <div>
-                  <label className="block mb-2 font-medium">Image</label>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileChange}
-                    className="w-full p-3 rounded-md text-gray-500 border-black border-[1.5px] text-[16px]"
-                    required
-                  />
-                </div>
-
-                <div className="mt-4 flex gap-4  justify-end   ">
-                  <button
-                    type="submit"
-                    className="
-                      flex-1 py-3 px-6 rounded-xl font-bold text-white text-[16px]
-                      bg-black"
-                  >
-                    Create Story
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={closeForm}
-                    className="
-                      flex-1 py-3 px-6 rounded-xl border border-gray-300
-                      font-semibold text-[16px]"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
+              </div>
             </div>
 
             <div className="flex-1 bg-gray-900 p-10 flex items-center justify-center">
