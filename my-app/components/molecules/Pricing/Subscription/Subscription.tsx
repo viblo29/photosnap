@@ -5,12 +5,32 @@ import plansFeatures from '../../../../public/plans-features.svg'
 import plansFeaturesTablet from '../../../../public/plans-features-tablet.svg'
 import plansFeaturesMobile from '../../../../public/plans-features-mobile.svg'
 import Plan from './Plan'
+import PaymentModal from './PaymentModal'
 
 function Subscription() {
   const [isYearly, setIsYearly] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedPlan, setSelectedPlan] = useState({
+    name: '',
+    price: '',
+    billingPeriod: ''
+  })
 
   const handleToggle = () => {
     setIsYearly(!isYearly)
+  }
+
+  const handlePickPlan = (planName: string, price: string) => {
+    const basePrice = parseFloat(price)
+    const displayPrice = isYearly ? (basePrice * 10).toFixed(2) : basePrice.toFixed(2)
+    const billingPeriod = isYearly ? 'per year' : 'per month'
+
+    setSelectedPlan({
+      name: planName,
+      price: displayPrice,
+      billingPeriod: billingPeriod
+    })
+    setIsModalOpen(true)
   }
 
   return (
@@ -44,6 +64,7 @@ function Subscription() {
             price='19.00'
             backgroundColor='gray'
             isYearly={isYearly}
+            onPickPlan={() => handlePickPlan('Basic', '19.00')}
           />
           <Plan 
             h1='Pro' 
@@ -52,6 +73,7 @@ function Subscription() {
             backgroundColor='black'
             isMiddle
             isYearly={isYearly}
+            onPickPlan={() => handlePickPlan('Pro', '39.00')}
           />
           <Plan 
             h1='Business' 
@@ -59,6 +81,7 @@ function Subscription() {
             price='99.00'
             backgroundColor='gray'
             isYearly={isYearly}
+            onPickPlan={() => handlePickPlan('Business', '99.00')}
           />
         </div>
       </div>
@@ -75,6 +98,14 @@ function Subscription() {
           <Image src={plansFeatures} alt='Plan Features'/>
         </div>
       </div>
+
+      <PaymentModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        planName={selectedPlan.name}
+        price={selectedPlan.price}
+        billingPeriod={selectedPlan.billingPeriod}
+      />
     </div>
   )
 }
