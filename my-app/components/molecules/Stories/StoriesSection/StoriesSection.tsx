@@ -367,7 +367,9 @@ export default function Stories() {
         {stories.map((story, index) => (
           <div
             key={story.title}
-            ref={(el) => (storyRefs.current[index] = el)}
+            ref={(el) => {
+              if (el) storyRefs.current[index] = el;
+            }}
             className={`
               group relative h-125 cursor-pointer
               transition-all duration-700 ease-out
