@@ -13,7 +13,15 @@ interface PlanProps {
   onPickPlan: () => void;
 }
 
-function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly, onPickPlan }: PlanProps) {
+function Plan({
+  h1,
+  h2,
+  price,
+  backgroundColor,
+  isMiddle = false,
+  isYearly,
+  onPickPlan,
+}: PlanProps) {
   const bgColor = backgroundColor === "black" ? "bg-black" : "bg-[#F5F5F5]";
   const textColor = backgroundColor === "black" ? "text-white" : "text-black";
   const buttonClasses =
@@ -22,11 +30,13 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly, onPi
       : "bg-black text-white hover:bg-[#DFDFDF] hover:text-black";
 
   const basePrice = parseFloat(price);
-  const displayPrice = isYearly ? (basePrice * 10).toFixed(2) : basePrice.toFixed(2);
+  const displayPrice = isYearly
+    ? (basePrice * 10).toFixed(2)
+    : basePrice.toFixed(2);
   const billingPeriod = isYearly ? "per year" : "per month";
 
   return (
-    <div >
+    <div>
       <div
         className={`hidden lg:flex ${bgColor} w-87.5 ${isMiddle ? "h-117.5" : "h-101.75"} ${textColor} flex-col items-center text-center`}
       >
@@ -58,24 +68,23 @@ function Plan({ h1, h2, price, backgroundColor, isMiddle = false, isYearly, onPi
         </div>
       </div>
 
-
       <div
         className={`hidden md:flex lg:hidden ${bgColor} w-172.25 h-67.5 ${textColor} flex-row  pr-12 py-10`}
       >
-
         {isMiddle && (
           <div className="flex items-center">
             <Image src={rectangleTablet} alt="" />
           </div>
         )}
-        
 
-        <div className={`flex flex-col justify-center flex-1 ${isMiddle ? "ml-8.5" : "ml-10"}`}>
+        <div
+          className={`flex flex-col justify-center flex-1 ${isMiddle ? "ml-8.5" : "ml-10"}`}
+        >
           <div className="flex flex-col gap-4 mb-8 w-67.5">
             <div className="font-bold text-[24px]/[25px]">{h1}</div>
             <div className="text-[15px]/[25px] opacity-60">{h2}</div>
           </div>
-          
+
           <button
             onClick={onPickPlan}
             className={`w-67.5 h-10 font-bold cursor-pointer text-[12px] tracking-[2px] uppercase ${buttonClasses} transition-colors duration-300 ease-in-out`}
