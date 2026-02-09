@@ -5,17 +5,15 @@ import React from "react";
 import Header from "@/components/molecules/Header/Header";
 import Footer from "@/components/molecules/Footer/Footer";
 
-
 function Home() {
   return (
     <>
-      <Header/>
-      <Top3Sections/>
-      <Stories/>
-      <Benefits/>
-      <Footer/>
+      <Header />
+      <Top3Sections />
+      <Stories />
+      <Benefits />
+      <Footer />
     </>
-    
   );
 }
 

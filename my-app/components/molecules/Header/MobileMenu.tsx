@@ -15,7 +15,6 @@ function MobileMenu() {
 
   return (
     <>
-
       {isMenuOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
@@ -51,9 +50,11 @@ function MobileMenu() {
             ${isMenuOpen ? "h-63.25 overflow-visible" : "h-0 overflow-hidden"}
           `}
         >
-          <div className={`flex flex-col items-center py-7.75 transition-opacity duration-200
+          <div
+            className={`flex flex-col items-center py-7.75 transition-opacity duration-200
             ${isMenuOpen ? "opacity-100" : "opacity-0"}
-          `}>
+          `}
+          >
             <div className="flex flex-col items-center gap-4.25 mb-4.25">
               <Link href="/stories">
                 <NavButtons text="Stories" textColor="black" />
@@ -68,9 +69,7 @@ function MobileMenu() {
 
             <div className="w-77.5 h-px bg-black opacity-25 mb-5" />
 
-            <Login
-              buttonClassName="font-bold text-xs tracking-[2px] px-6 py-3 bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out"
-            />
+            <Login buttonClassName="font-bold text-xs tracking-[2px] px-6 py-3 bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out" />
           </div>
         </div>
       </div>

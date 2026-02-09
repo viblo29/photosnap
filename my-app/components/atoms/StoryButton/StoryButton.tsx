@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
 interface HomePageButtonProps {
-  width: string
+  width: string;
 }
 
 function StoryButton({ width }: HomePageButtonProps) {
@@ -13,7 +13,7 @@ function StoryButton({ width }: HomePageButtonProps) {
       READ STORY
       <img src="/images/story_arrow.svg" alt="arrow" />
     </button>
-  )
+  );
 }
 
-export default StoryButton
+export default StoryButton;

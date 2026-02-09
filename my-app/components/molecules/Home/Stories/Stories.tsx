@@ -1,37 +1,36 @@
-import StoryButton from '@/components/atoms/StoryButton/StoryButton'
+import StoryButton from "@/components/atoms/StoryButton/StoryButton";
 
 function Stories() {
   const stories = [
     {
       title: "The Mountains",
       author: "John Appleseed",
-      image: "/images/mountain_story.webp"
+      image: "/images/mountain_story.webp",
     },
     {
       title: "Sunset Cityscapes",
       author: "Benjamin Cruz",
-      image: "/images/city_story.webp"
+      image: "/images/city_story.webp",
     },
     {
       title: "18 Days Voyage",
       author: "Alexei Borodin",
-      image: "/images/man_walking_story.webp"
+      image: "/images/man_walking_story.webp",
     },
     {
       title: "Architecturals",
       author: "Samantha Brooke",
-      image: "/images/round_building_story.webp"
-    }
-  ]
+      image: "/images/round_building_story.webp",
+    },
+  ];
 
-  return (  
-       <div className="grid w-screen grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
+  return (
+    <div className="grid w-screen grid-cols-4 max-lg:grid-cols-2 max-sm:grid-cols-1">
       {stories.map((story) => (
         <div
           key={story.title}
           className="relative group w-full h-125 cursor-pointer"
         >
-
           {/* INVISIBLE CONT (gasazomad)*/}
           <div className="pointer-events-none opacity-0">
             <div className="px-10 pb-5 pt-90.25 flex flex-col  items-start">
@@ -50,7 +49,6 @@ function Stories() {
             </div>
           </div>
 
-          {/* MAIN CONT*/}
           <div
             className="
               absolute
@@ -60,7 +58,7 @@ function Stories() {
               group-hover:-translate-y-6
             "
             style={{
-              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.01), rgba(0,0,0,0.6612)), url('${story.image}')`
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.01), rgba(0,0,0,0.6612)), url('${story.image}')`,
             }}
           >
             <div className="mb-10 mt-90.25 flex flex-col items-start">
@@ -75,12 +73,12 @@ function Stories() {
 
               <div className="mb-5 h-px bg-gray-500 w-full" />
 
-              <StoryButton width='100%' />
+              <StoryButton width="100%" />
             </div>
           </div>
 
-          {/* BORDER DIV  */}
-          <div className="
+          <div
+            className="
   absolute
   bottom-0 left-0 right-0
   h-1.5
@@ -90,12 +88,12 @@ function Stories() {
   transition-all duration-300 ease-out
   group-hover:scale-y-100 // Expand to full height
   group-hover:-translate-y-6 // Move up with content
-"></div>
-
+"
+          ></div>
         </div>
       ))}
     </div>
-  )
+  );
 }
 
-export default Stories
+export default Stories;
