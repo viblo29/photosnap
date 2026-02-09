@@ -231,19 +231,18 @@ export default function Stories() {
       <button
         onClick={openForm}
         className={`
-    fixed bottom-4 right-8 z-20
-    w-16 h-16
-    font-bold text-[36px]
-    flex items-center justify-center
-    shadow-2xl
-    transition-all duration-300 hover:scale-110   
-  
-        ${
-          isOnFooter
-            ? "bg-white text-black rounded-xl "
-            : "bg-black text-white rounded-xl "
-        }
-          `}
+          fixed bottom-4 right-8 z-20
+          w-16 h-16
+          font-bold text-[36px]
+          flex items-center justify-center
+          shadow-2xl
+          transition-all duration-300 hover:scale-110   
+          ${
+            isOnFooter
+              ? "bg-white text-black rounded-xl "
+              : "bg-black text-white rounded-xl "
+          }
+        `}
       >
         +
       </button>
@@ -253,9 +252,9 @@ export default function Stories() {
           onClick={closeForm}
           className="
             fixed inset-0 z-50
-          bg-black/70 
+            bg-black/70 
             backdrop-blur-sm
-            "
+          "
         >
           <div className="min-h-full flex items-center justify-center">
             <div
@@ -351,7 +350,6 @@ export default function Stories() {
                 </form>
               </div>
 
-
               <div className="w-full lg:w-1/2 bg-gray-900 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
                 <div className="w-full max-w-md aspect-3/4 relative rounded-xl overflow-hidden shadow-2xl">
                   <div
@@ -375,30 +373,6 @@ export default function Stories() {
 
                     <StoryButton width="100%" />
                   </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex-1 bg-gray-900 p-10 flex items-center justify-center">
-              <div className="w-full max-w-100 aspect-3/4 relative rounded-xl overflow-hidden shadow-2xl">
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.75)), url(${newImageUrl})`,
-                  }}
-                />
-
-                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <p className="text-md opacity-90 mb-1">{newDate || "Date"}</p>
-                  <h3 className="text-2xl font-bold mb-1">
-                    {newTitle || "Story Title"}
-                  </h3>
-                  <p className="text-[14px] opacity-90">
-                    {newAuthor || "by Author Name"}
-                  </p>
-                  <div className="my-5 h-px bg-white/40" />
-
-                  <StoryButton width="100%" />
                 </div>
               </div>
             </div>
