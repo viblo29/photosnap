@@ -351,7 +351,7 @@ export default function Stories() {
                 </form>
               </div>
 
-
+              {/* Preview Section */}
               <div className="w-full lg:w-1/2 bg-gray-900 p-6 sm:p-8 lg:p-10 flex items-center justify-center">
                 <div className="w-full max-w-md aspect-3/4 relative rounded-xl overflow-hidden shadow-2xl">
                   <div
