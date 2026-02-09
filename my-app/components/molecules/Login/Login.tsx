@@ -43,21 +43,20 @@ const Login = ({ buttonClassName }: Props) => {
   }, []);
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("photosnap-user");
-    if (savedUser) {
-      const parsedUser = JSON.parse(savedUser);
-      setLoggedInUser(parsedUser.username);
+    const session = sessionStorage.getItem("photosnap-session");
+    if (session) {
+      setLoggedInUser(session);
     }
   }, []);
 
-  const onSubmit = (data: FormData) => {
+  const onSignupSubmit = (data: FormData) => {
     const user = {
       username: data.username,
       email: data.email!,
       password: data.password,
     };
 
-    localStorage.setItem("photosnap-user", JSON.stringify(user));
+    sessionStorage.setItem("photosnap-user", JSON.stringify(user));
 
     setSuccessUser(data.username);
     setShowSuccess(true);
@@ -67,10 +66,36 @@ const Login = ({ buttonClassName }: Props) => {
     }, 3000);
 
     setShowModal(false);
-    setTimeout(() => setIsOpen(false), 300);
+    setTimeout(() => {
+      setIsOpen(false);
+      setMode("login");
+      reset();
+    }, 300);
+  };
 
-    reset();
-    setMode("login");
+  const onLoginSubmit = (data: FormData) => {
+    const savedUser = sessionStorage.getItem("photosnap-user");
+
+    if (!savedUser) {
+      setMode("newUser");
+      return;
+    }
+
+    const parsedUser = JSON.parse(savedUser);
+
+    if (
+      data.username === parsedUser.username &&
+      data.password === parsedUser.password
+    ) {
+      setLoggedInUser(parsedUser.username);
+      sessionStorage.setItem("photosnap-session", parsedUser.username);
+      
+      setShowModal(false);
+      setTimeout(() => setIsOpen(false), 300);
+      reset();
+    } else {
+      alert("Invalid username or password");
+    }
   };
 
   useEffect(() => {
@@ -122,28 +147,7 @@ const Login = ({ buttonClassName }: Props) => {
                     Log in
                   </h2>
                   <form
-                    onSubmit={handleSubmit((data) => {
-                      const savedUser = localStorage.getItem("photosnap-user");
-
-                      if (!savedUser) {
-                        setMode("newUser");
-                        return;
-                      }
-
-                      const parsedUser = JSON.parse(savedUser);
-
-                      if (
-                        data.username === parsedUser.username &&
-                        data.password === parsedUser.password
-                      ) {
-                        setLoggedInUser(parsedUser.username);
-                        setShowModal(false);
-                        setTimeout(() => setIsOpen(false), 300);
-                        reset();
-                      } else {
-                        alert("Invalid username or password");
-                      }
-                    })}
+                    onSubmit={handleSubmit(onLoginSubmit)}
                     className="space-y-4"
                   >
                     <div className="w-full">
@@ -197,7 +201,10 @@ const Login = ({ buttonClassName }: Props) => {
                       Don't have an account?{" "}
                       <button
                         type="button"
-                        onClick={() => setMode("signup")}
+                        onClick={() => {
+                            setMode("signup");
+                            reset();
+                        }}
                         className="font-semibold underline hover:text-gray-600 transition-colors cursor-pointer"
                       >
                         Sign up
@@ -214,7 +221,10 @@ const Login = ({ buttonClassName }: Props) => {
                     Please sign up.
                   </p>
                   <button
-                    onClick={() => setMode("signup")}
+                    onClick={() => {
+                        setMode("signup");
+                        reset();
+                    }}
                     className={buttonClasses}
                   >
                     Sign Up
@@ -227,7 +237,7 @@ const Login = ({ buttonClassName }: Props) => {
                   <h2 className="text-2xl font-semibold text-center mb-6">
                     Sign Up
                   </h2>
-                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                  <form onSubmit={handleSubmit(onSignupSubmit)} className="space-y-4">
                     <div className="w-full">
                       <input
                         type="text"
@@ -396,7 +406,7 @@ const Login = ({ buttonClassName }: Props) => {
                 onClick={() => {
                   setLoggedInUser(null);
                   setShowUserMenu(false);
-                  localStorage.removeItem("photosnap-user");
+                  sessionStorage.removeItem("photosnap-session");
                 }}
               >
                 Log out
