@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import StoryButton from '@/components/atoms/StoryButton/StoryButton'
+import { useState, useEffect, useRef } from "react";
+import StoryButton from "@/components/atoms/StoryButton/StoryButton";
 
 export default function Stories() {
   const defaultStories = [
@@ -101,73 +101,98 @@ export default function Stories() {
       author: "by William Malcolm",
       image: "/images/story_12.webp",
     },
-  ]
+  ];
 
-  const [stories, setStories] = useState<any[]>([])
-  const [showForm, setShowForm] = useState(false)
-  const [newTitle, setNewTitle] = useState('')
-  const [newAuthor, setNewAuthor] = useState('')
-  const [newDate, setNewDate] = useState('')
-  const [newImageUrl, setNewImageUrl] = useState('')
-  const [isOnFooter, setIsOnFooter] = useState(false)
+  const [stories, setStories] = useState<any[]>([]);
+  const [showForm, setShowForm] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [newAuthor, setNewAuthor] = useState("");
+  const [newDate, setNewDate] = useState("");
+  const [newImageUrl, setNewImageUrl] = useState("");
+  const [isOnFooter, setIsOnFooter] = useState(false);
+  const [visibleStories, setVisibleStories] = useState<Set<number>>(new Set());
 
+  const storyRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // local storage
   useEffect(() => {
-    const saved = localStorage.getItem('stories')
+    const saved = localStorage.getItem("stories");
     if (saved) {
-      setStories(JSON.parse(saved))
+      setStories(JSON.parse(saved));
     } else {
-      setStories(defaultStories)
-      localStorage.setItem('stories', JSON.stringify(defaultStories))
+      setStories(defaultStories);
+      localStorage.setItem("stories", JSON.stringify(defaultStories));
     }
-  }, [])
+  }, []);
 
-
-  //footer detection
   useEffect(() => {
     const handleScroll = () => {
-      const footer = document.querySelector('#main-footer')
+      const footer = document.querySelector("#main-footer");
 
-      if (!footer) return
+      if (!footer) return;
 
-      const footerPlace = footer.getBoundingClientRect()
-      const buttonBottom = window.innerHeight - 80
+      const footerPlace = footer.getBoundingClientRect();
+      const buttonBottom = window.innerHeight - 80;
 
       if (footerPlace.top < buttonBottom) {
-        setIsOnFooter(true)
+        setIsOnFooter(true);
       } else {
-        setIsOnFooter(false)
+        setIsOnFooter(false);
       }
-    }
+    };
 
-
-
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  // form handler
+  // Scroll animation observer
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    storyRefs.current.forEach((ref, index) => {
+      if (!ref) return;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setVisibleStories((prev) => new Set(prev).add(index));
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+
+      observer.observe(ref);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, [stories]);
+
   function openForm() {
-    setShowForm(true)
+    setShowForm(true);
   }
 
   function closeForm() {
-    setShowForm(false)
-    setNewTitle('')
-    setNewAuthor('')
-    setNewDate('')
-    setNewImageUrl('')
+    setShowForm(false);
+    setNewTitle("");
+    setNewAuthor("");
+    setNewDate("");
+    setNewImageUrl("");
   }
 
-  // file reader
   function handleFileChange(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) {
-      setNewImageUrl('');
+      setNewImageUrl("");
       return;
     }
 
@@ -181,26 +206,25 @@ export default function Stories() {
     reader.readAsDataURL(file);
   }
 
-  // submit handler
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault()
+    event.preventDefault();
 
     const newStory = {
       title: newTitle,
       author: newAuthor,
       date: newDate,
       image: newImageUrl,
-    }
+    };
 
-    const updatedStories = [newStory, ...stories]
-    setStories(updatedStories)
-    localStorage.setItem('stories', JSON.stringify(updatedStories))
+    const updatedStories = [newStory, ...stories];
+    setStories(updatedStories);
+    localStorage.setItem("stories", JSON.stringify(updatedStories));
 
-    setNewTitle('')
-    setNewAuthor('')
-    setNewDate('')
-    setNewImageUrl('')
-    setShowForm(false)
+    setNewTitle("");
+    setNewAuthor("");
+    setNewDate("");
+    setNewImageUrl("");
+    setShowForm(false);
   }
 
   return (
@@ -215,17 +239,16 @@ export default function Stories() {
     shadow-2xl
     transition-all duration-300 hover:scale-110   
   
-        ${isOnFooter
-            ? 'bg-white text-black rounded-xl '
-            : 'bg-black text-white rounded-xl '
-          }
+        ${
+          isOnFooter
+            ? "bg-white text-black rounded-xl "
+            : "bg-black text-white rounded-xl "
+        }
           `}
-
       >
         +
       </button>
 
-      {/* form */}
       {showForm && (
         <div
           onClick={closeForm}
@@ -323,25 +346,40 @@ export default function Stories() {
                 />
 
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                  <p className="text-md opacity-90 mb-1">{newDate || 'Date'}</p>
-                  <h3 className="text-2xl font-bold mb-1">{newTitle || 'Story Title'}</h3>
-                  <p className="text-[14px] opacity-90">{newAuthor || 'by Author Name'}</p>
+                  <p className="text-md opacity-90 mb-1">{newDate || "Date"}</p>
+                  <h3 className="text-2xl font-bold mb-1">
+                    {newTitle || "Story Title"}
+                  </h3>
+                  <p className="text-[14px] opacity-90">
+                    {newAuthor || "by Author Name"}
+                  </p>
                   <div className="my-5 h-px bg-white/40" />
 
                   <StoryButton width="100%" />
                 </div>
-              </div >
-            </div >
-          </div >
-        </div >
-      )
-      }
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 w-screen">
-        {stories.map((story) => (
+        {stories.map((story, index) => (
           <div
             key={story.title}
-            className="group relative h-125  cursor-pointer"
+            ref={(el) => (storyRefs.current[index] = el)}
+            className={`
+              group relative h-125 cursor-pointer
+              transition-all duration-700 ease-out
+              ${
+                visibleStories.has(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }
+            `}
+            style={{
+              transitionDelay: `${(index % 4) * 100}ms`,
+            }}
           >
             <div className="absolute inset-0 bg-linear-to-b from-black/5 to-black/70 transition-transform group-hover:-translate-y-6 duration-300" />
 
@@ -375,5 +413,5 @@ export default function Stories() {
         ))}
       </div>
     </>
-  )
+  );
 }
