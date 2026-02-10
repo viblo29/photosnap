@@ -48,7 +48,7 @@ export const AuthInput = ({
       <button
         type="button"
         onClick={onToggle}
-        className="absolute right-3 top-[10px] text-gray-500 hover:text-black transition-colors cursor-pointer"
+        className="absolute right-3 top-2.5 text-gray-500 hover:text-black transition-colors cursor-pointer"
       >
         <EyeIcon visible={visible!} />
       </button>
