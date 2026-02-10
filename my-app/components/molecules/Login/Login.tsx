@@ -66,12 +66,22 @@ const Login = ({ buttonClassName }: Props) => {
     const savedUser = sessionStorage.getItem("photosnap-user");
     if (!savedUser) { setMode("newUser"); return; }
     const parsedUser = JSON.parse(savedUser);
-    if (data.username === parsedUser.username && data.password === parsedUser.password) {
+
+  // ვამოწმებთ, ემთხვევა თუ არა შეყვანილი მნიშვნელობა ან იუზერნეიმს, ან მეილს
+    const identifierMatches = 
+      data.username === parsedUser.username || 
+      data.username === parsedUser.email;
+
+    if (identifierMatches && data.password === parsedUser.password) {
+      // თუ მეილით შევიდა, მაინც იუზერნეიმი გამოვაჩინოთ ჰედერში
       setLoggedInUser(parsedUser.username);
       sessionStorage.setItem("photosnap-session", parsedUser.username);
-      closePortal();
+      
+      setShowModal(false);
+      setTimeout(() => setIsOpen(false), 300);
+      reset();
     } else {
-      alert("Invalid username or password");
+      alert("Invalid username/email or password");
     }
   };
 
@@ -105,7 +115,7 @@ const Login = ({ buttonClassName }: Props) => {
               <>
                 <h2 className="text-2xl font-semibold text-center mb-6">Log in</h2>
                 <form onSubmit={handleSubmit(onLoginSubmit)} className="space-y-4">
-                  <AuthInput name="username" placeholder="Username" register={register} errors={errors} validation={{ required: "Username is required", minLength: { value: 3, message: "Username must be at least 3 characters" } }} />
+                  <AuthInput name="username" placeholder="Username/Email" register={register} errors={errors} validation={{ required: "Username or Email is required", minLength: { value: 3, message: "Too short" } }} />
                   <AuthInput name="password" placeholder="Password" register={register} errors={errors} validation={{ required: "Password cannot be empty" }} showToggle onToggle={() => setShowPassword(!showPassword)} visible={showPassword} />
                   <button type="submit" className={buttonClasses}>Log in</button>
                   <p className="text-center text-sm mt-4">Don't have an account? <button type="button" onClick={() => { setMode("signup"); reset(); }} className="font-semibold underline hover:text-gray-600 transition-colors">Sign up</button></p>
