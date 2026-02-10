@@ -27,6 +27,9 @@ const Login = ({ buttonClassName }: Props) => {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -57,6 +60,9 @@ const Login = ({ buttonClassName }: Props) => {
     };
 
     sessionStorage.setItem("photosnap-user", JSON.stringify(user));
+    
+    setLoggedInUser(data.username);
+    sessionStorage.setItem("photosnap-session", data.username);
 
     setSuccessUser(data.username);
     setShowSuccess(true);
@@ -101,6 +107,8 @@ const Login = ({ buttonClassName }: Props) => {
   useEffect(() => {
     if (isOpen) {
       reset();
+      setShowPassword(false); 
+      setShowConfirmPassword(false);
       setShowModal(false);
       const timeout = setTimeout(() => {
         setShowModal(true);
@@ -110,8 +118,28 @@ const Login = ({ buttonClassName }: Props) => {
     }
   }, [isOpen, reset]);
 
+  const EyeIcon = ({ visible }: { visible: boolean }) => (
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      strokeWidth={1.5} 
+      stroke="currentColor" 
+      className="w-5 h-5"
+    >
+      {visible ? (
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
+      ) : (
+        <>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.644C3.413 8.133 7.182 4.5 12 4.5c4.788 0 8.557 3.633 9.963 7.178.07.175.07.362 0 .537C20.587 15.867 16.818 19.5 12 19.5c-4.788 0-8.557-3.633-9.963-7.178z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </>
+      )}
+    </svg>
+  );
+
   const buttonClasses =
-    "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out py-2 rounded-md w-full";
+    "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out py-2 rounded-none w-full";
 
   const loginModal =
     isOpen && mounted
@@ -128,7 +156,7 @@ const Login = ({ buttonClassName }: Props) => {
             />
 
             <div
-              className={`relative bg-white/90 w-full max-w-md p-8 rounded-lg shadow-lg transform transition-all duration-300 ease-out
+              className={`relative bg-white/90 w-full max-w-md p-8 rounded-none shadow-lg transform transition-all duration-300 ease-out
           ${showModal ? "opacity-100 scale-100" : "opacity-0 scale-90"}`}
             >
               <button
@@ -151,10 +179,8 @@ const Login = ({ buttonClassName }: Props) => {
                     className="space-y-4"
                   >
                     <div className="w-full">
-                      <input
-                        type="text"
-                        placeholder="Username"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                      <input type="text" placeholder="Username"
+                        className={`w-full border px-4 py-2 rounded-none ${
                           errors.username ? "border-red-500" : ""
                         }`}
                         {...register("username", {
@@ -172,11 +198,9 @@ const Login = ({ buttonClassName }: Props) => {
                       )}
                     </div>
 
-                    <div className="w-full">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                    <div className="w-full relative">
+                      <input type={showPassword ? "text" : "password"} placeholder="Password"
+                        className={`w-full border px-4 py-2 rounded-none pr-10 ${
                           errors.password ? "border-red-500" : ""
                         }`}
                         {...register("password", {
@@ -187,6 +211,13 @@ const Login = ({ buttonClassName }: Props) => {
                           },
                         })}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-[10px] text-gray-500 hover:text-black transition-colors"
+                      >
+                        <EyeIcon visible={showPassword} />
+                      </button>
                       {errors.password && (
                         <p className="text-red-500 text-sm">
                           {errors.password.message}
@@ -239,10 +270,8 @@ const Login = ({ buttonClassName }: Props) => {
                   </h2>
                   <form onSubmit={handleSubmit(onSignupSubmit)} className="space-y-4">
                     <div className="w-full">
-                      <input
-                        type="text"
-                        placeholder="Username"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                      <input type="text" placeholder="Username"
+                        className={`w-full border px-4 py-2 rounded-none ${
                           errors.username ? "border-red-500" : ""
                         }`}
                         {...register("username", {
@@ -261,10 +290,8 @@ const Login = ({ buttonClassName }: Props) => {
                     </div>
 
                     <div className="w-full">
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                      <input type="email" placeholder="Email"
+                        className={`w-full border px-4 py-2 rounded-none ${
                           errors.email ? "border-red-500" : ""
                         }`}
                         {...register("email", {
@@ -282,11 +309,9 @@ const Login = ({ buttonClassName }: Props) => {
                       )}
                     </div>
 
-                    <div className="w-full">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                    <div className="w-full relative">
+                      <input type={showPassword ? "text" : "password"} placeholder="Password"
+                        className={`w-full border px-4 py-2 rounded-none pr-10 ${
                           errors.password ? "border-red-500" : ""
                         }`}
                         {...register("password", {
@@ -297,6 +322,13 @@ const Login = ({ buttonClassName }: Props) => {
                           },
                         })}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-[10px] text-gray-500 hover:text-black transition-colors"
+                      >
+                        <EyeIcon visible={showPassword} />
+                      </button>
                       {errors.password && (
                         <p className="text-red-500 text-sm">
                           {errors.password.message}
@@ -304,11 +336,11 @@ const Login = ({ buttonClassName }: Props) => {
                       )}
                     </div>
 
-                    <div className="w-full">
+                    <div className="w-full relative">
                       <input
-                        type="password"
+                        type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm Password"
-                        className={`w-full border px-4 py-2 rounded-md ${
+                        className={`w-full border px-4 py-2 rounded-none pr-10 ${
                           errors.confirmPassword ? "border-red-500" : ""
                         }`}
                         {...register("confirmPassword", {
@@ -317,6 +349,13 @@ const Login = ({ buttonClassName }: Props) => {
                             value === passwordValue || "Passwords do not match",
                         })}
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className="absolute right-3 top-[10px] text-gray-500 hover:text-black transition-colors"
+                      >
+                        <EyeIcon visible={showConfirmPassword} />
+                      </button>
                       {errors.confirmPassword && (
                         <p className="text-red-500 text-sm">
                           {errors.confirmPassword.message}
@@ -343,7 +382,7 @@ const Login = ({ buttonClassName }: Props) => {
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
             <div
-              className="relative bg-white/90 w-full max-w-md p-8 rounded-lg shadow-lg
+              className="relative bg-white/90 w-full max-w-md p-8 rounded-none shadow-lg
                   transform transition-all duration-300 ease-out
                   opacity-100 scale-100 text-center"
             >
@@ -375,7 +414,7 @@ const Login = ({ buttonClassName }: Props) => {
           }}
           className={
             buttonClassName ??
-            "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out font-bold text-xs tracking-[2px] px-6 py-3 rounded-md"
+            "bg-[#000000] text-white hover:text-black hover:bg-[#DFDFDF] cursor-pointer transition-colors duration-300 ease-in-out font-bold text-xs tracking-[2px] px-6 py-3 rounded-none"
           }
         >
           {loggedInUser ? loggedInUser : "LOG IN"}
@@ -383,7 +422,7 @@ const Login = ({ buttonClassName }: Props) => {
 
         {loggedInUser && (
           <div
-            className={`absolute right-0 mt-2 w-44 bg-white/90 backdrop-blur-md rounded-md shadow-lg z-60
+            className={`absolute right-0 mt-2 w-44 bg-white/90 backdrop-blur-md rounded-none shadow-lg z-60
               overflow-hidden transition-all duration-300 ease-out
               ${showUserMenu ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
             `}
