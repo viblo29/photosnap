@@ -21,6 +21,15 @@ function Subscription() {
   };
 
   const handlePickPlan = (planName: string, price: string) => {
+    const loggedInUser = sessionStorage.getItem("photosnap-session");
+
+    if (!loggedInUser) {
+      alert(
+        'Please log in first to subscribe to a plan. Click the "LOG IN" button in the header.',
+      );
+      return;
+    }
+
     const basePrice = parseFloat(price);
     const displayPrice = isYearly
       ? (basePrice * 10).toFixed(2)
