@@ -67,13 +67,11 @@ const Login = ({ buttonClassName }: Props) => {
     if (!savedUser) { setMode("newUser"); return; }
     const parsedUser = JSON.parse(savedUser);
 
-  // ვამოწმებთ, ემთხვევა თუ არა შეყვანილი მნიშვნელობა ან იუზერნეიმს, ან მეილს
     const identifierMatches = 
       data.username === parsedUser.username || 
       data.username === parsedUser.email;
 
     if (identifierMatches && data.password === parsedUser.password) {
-      // თუ მეილით შევიდა, მაინც იუზერნეიმი გამოვაჩინოთ ჰედერში
       setLoggedInUser(parsedUser.username);
       sessionStorage.setItem("photosnap-session", parsedUser.username);
       
