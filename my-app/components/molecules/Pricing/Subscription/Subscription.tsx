@@ -2,6 +2,10 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import plansFeatures from '../../../../public/plans-features.svg'
+import plansFeaturesTablet from '../../../../public/plans-features-tablet.svg'
+import plansFeaturesMobile from '../../../../public/plans-features-mobile.svg'
+import Plan from './Plan'
+import PaymentModal from './PaymentModal'
 
 function Subscription() {
   const [isYearly, setIsYearly] = useState(false)
