@@ -44,14 +44,16 @@ function AllBenefits() {
     <div
       className="w-screen  p-40 pt-8 flex items-center justify-between flex-wrap
                  max-[1100px]:p-20 max-[1100px]:pt-10
-                 max-[900px]:px-9 max-[767px]:justify-center"
+                 max-[900px]:px-9 max-[767px]:justify-center
+                 max-w-512.5 mx-auto"
     >
       {benefits.map((item, index) => (
         <div
           key={index}
           className="w-87.5 h-59 flex flex-col justify-between items-center mt-26
                      max-[1100px]:w-85 max-[1100px]:mt-16
-                     max-[540px]:w-77.5"
+                     max-[540px]:w-77.5
+                     min-[1700px]:w-110"
         >
           <div className={`${item.iconWidth} h-18 flex items-center`}>
             <img src={item.icon} alt={item.title} />
