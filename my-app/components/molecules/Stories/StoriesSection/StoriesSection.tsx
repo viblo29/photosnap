@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { useState, useEffect} from "react";
-import StoryButton from "@/components/atoms/StoryButton/StoryButton";
+import { useState, useEffect } from 'react'
+import StoryButton from '@/components/atoms/StoryButton/StoryButton'
 
 export default function Stories() {
   const defaultStories = [
