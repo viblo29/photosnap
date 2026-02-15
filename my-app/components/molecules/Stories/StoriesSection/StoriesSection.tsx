@@ -231,7 +231,7 @@ export default function Stories() {
       <button
         onClick={openForm}
         className={`
-          fixed bottom-4 right-8 z-20
+          fixed bottom-8 right-8 z-20 cursor-pointer
           w-16 h-16
           font-bold text-[36px]
           flex items-center justify-center
